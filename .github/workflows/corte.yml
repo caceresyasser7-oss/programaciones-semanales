@@ -1,0 +1,33 @@
+name: Corte semanal (viernes 3:00 PM Managua)
+
+on:
+  schedule:
+    - cron: '0 21 * * 5'   # 21:00 UTC = 3:00 PM en Managua (UTC-6)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: corte-semanal
+  cancel-in-progress: false
+
+jobs:
+  corte:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Cerrar semana y generar Excel
+        run: node scripts/corte.js
+      - name: Guardar en el repositorio
+        run: |
+          git config user.name "corte-semanal"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data excel
+          if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
+          git commit -m "Corte semanal $(TZ=America/Managua date +%Y-%m-%d)"
+          for i in 1 2 3; do git pull --rebase && git push && exit 0; sleep 5; done
+          exit 1
