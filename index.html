@@ -303,6 +303,7 @@ function guardar(lunes, cambios){
 function marcar(lunes){
   if(!puedeEscribir) return;
   tocadas[lunes]=true; pendiente=true; estadoGuardado('Guardando…');
+  ls('respaldo',JSON.stringify({semanas:Object.keys(tocadas).reduce(function(o,l){o[l]=semanas[l];return o;},JSON.parse(ls('respaldo')||'{"semanas":{}}').semanas)}));
   clearTimeout(timerGuardar); timerGuardar=setTimeout(subir,1200);
 }
 function subir(intento){
@@ -313,7 +314,9 @@ function subir(intento){
   var msg='Programa semanal: '+Object.keys(mias).map(function(l){return 'S'+semanaISO(l);}).join(', ');
   api('/contents/'+REPO.path,{method:'PUT',body:JSON.stringify({message:msg,content:textoAB64(JSON.stringify(cuerpo,null,1)),sha:sha||undefined,branch:REPO.branch})})
   .then(function(r){
-    if(r.ok) return r.json().then(function(j){ sha=j.content.sha; guardando=false; estadoGuardado(pendiente?'Guardando…':'Guardado'); });
+    if(r.ok) return r.json().then(function(j){ sha=j.content.sha; guardando=false; if(!pendiente) ls('respaldo',null); errorGuardado(null); estadoGuardado(pendiente?'Guardando…':'Guardado'); });
+    if(r.status===401) throw new Error('el token no es válido o venció; toque Desconectar y conéctese con un token nuevo');
+    if(r.status===403||r.status===404) throw new Error('el token no tiene permiso de escritura (Contents: Read and write) en programaciones-semanales');
     if((r.status===409||r.status===422) && !intento){
       // alguien más guardó (por ejemplo, el corte automático): mezclar y reintentar
       return leerRemoto().then(function(rem){
@@ -326,8 +329,15 @@ function subir(intento){
   }).catch(function(e){
     guardando=false; Object.keys(mias).forEach(function(l){ tocadas[l]=true; }); pendiente=true;
     estadoGuardado('Sin guardar');
-    toast('No se pudo guardar en GitHub ('+(e.message||e)+'). Reintente con cualquier cambio o recargue.');
+    errorGuardado('Los cambios NO se guardaron en GitHub: '+(e.message||e)+'. Quedan guardados en este navegador hasta que se puedan subir.');
   });
+}
+function errorGuardado(msg){
+  var a=$('aviso');
+  if(!msg){ if(a.dataset.err){ a.dataset.err=''; a.hidden=true; } return; }
+  a.dataset.err='1'; a.hidden=false; a.className='banner warn'; a.innerHTML='';
+  a.appendChild(el('span',{text:msg}));
+  a.appendChild(el('button',{class:'primary',type:'button',onclick:function(){ subir(); }},['Reintentar']));
 }
 function estadoGuardado(t){ var e=$('estado-guardado'); if(e) e.textContent=t; }
 window.addEventListener('beforeunload',function(ev){ if(pendiente||guardando){ ev.preventDefault(); ev.returnValue=''; } });
@@ -401,7 +411,7 @@ function render(){
   var a=$('aviso');
   if(viendo!==actual){ a.hidden=false; a.className='banner'; a.innerHTML=''; a.appendChild(el('span',{text:'Está viendo una semana cerrada (solo lectura).'})); a.appendChild(el('button',{type:'button',onclick:function(){viendo=actual;editando=null;render();window.scrollTo(0,0);}},['Volver a la semana en curso'])); }
   else if(!puedeEscribir){ a.hidden=false; a.className='banner warn'; a.innerHTML=''; a.appendChild(el('span',{text:'Modo consulta. Para agregar o cambiar trabajos, conecte su cuenta de GitHub.'})); a.appendChild(el('button',{class:'primary',type:'button',onclick:abrirConexion},['Conectar GitHub'])); }
-  else a.hidden=true;
+  else if(!a.dataset.err) a.hidden=true;
   // kpis
   var tr=s.trabajos||[], hhP=0, eqs={};
   tr.forEach(function(t){ hhP+=hhDe(t); if(t.equipo) eqs[t.equipo]=1; });
@@ -639,7 +649,12 @@ function validarToken(t){
   token=t;
   return api('').then(function(r){ if(!r.ok) throw new Error('El token no tiene acceso al repositorio ('+r.status+').'); return r.json(); }).then(function(j){
     if(!j.permissions||!j.permissions.push) throw new Error('El token no tiene permiso de escritura en el repositorio.');
-    puedeEscribir=true; return true;
+    // Prueba de escritura sin cambiar nada: un PUT con sha falso responde 409/422 si hay permiso, 403/404 si no.
+    return api('/contents/'+REPO.path,{method:'PUT',body:JSON.stringify({message:'prueba',content:textoAB64('{}'),sha:'0000000000000000000000000000000000000000',branch:REPO.branch})}).then(function(r){
+      if(r.status===401) throw new Error('El token no es válido o ya venció. Cree uno nuevo.');
+      if(r.status===403||r.status===404) throw new Error('El token no tiene permiso para guardar. Al crearlo, en «Repository access» marque programaciones-semanales y en «Contents» elija «Read and write».');
+      puedeEscribir=true; return true;
+    });
   });
 }
 $('form-conexion').addEventListener('submit',function(ev){
@@ -654,7 +669,11 @@ $('con-cerrar').addEventListener('click',function(){ $('conexion').hidden=true; 
 function cargar(){
   return leerRemoto().then(function(rem){
     sha=rem.sha; semanas=rem.datos||{};
+    var resp=null; try{ resp=JSON.parse(ls('respaldo')||'null'); }catch(e){}
+    var rec=0;
+    if(resp&&resp.semanas&&puedeEscribir){ Object.keys(resp.semanas).forEach(function(l){ if(resp.semanas[l] && (!semanas[l]||semanas[l].estado!=='cerrada')){ semanas[l]=resp.semanas[l]; rec++; } }); }
     cerrarVencidas(); asegurarAbierta(); render();
+    if(rec){ Object.keys(resp.semanas).forEach(function(l){ tocadas[l]=true; }); pendiente=true; subir(); toast('Se recuperaron cambios que no se habían guardado. Subiendo a GitHub…'); }
   }).catch(function(e){
     asegurarAbierta(); render();
     var a=$('aviso'); a.hidden=false; a.className='banner warn'; a.textContent='No se pudo leer el historial desde GitHub ('+(e.message||e)+'). Recargue la página.';
