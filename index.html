@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Programa Semanal de Mantenimiento</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2715%27 fill=%27%23f5b301%27/%3E%3Cpath d=%27M9 16.5l4.5 4.5L23 11.5%27 fill=%27none%27 stroke=%27%231b1a17%27 stroke-width=%273.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
@@ -37,6 +38,8 @@ h1{font-family:var(--f-display);font-weight:700;font-size:1.9rem;letter-spacing:
 .sub{color:var(--amber);font-family:var(--f-display);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.95rem;margin-top:4px}
 .corte{display:flex;flex-direction:column;align-items:flex-end;gap:2px;font-size:.85rem;color:#cfcabd}
 .corte b{color:var(--band-ink);font-family:var(--f-mono);font-weight:500}
+h1{display:flex;align-items:center;gap:10px}
+.logo{width:1.1em;height:1.1em;flex:0 0 auto}
 h2{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:1.15rem;margin:0;display:flex;align-items:center;gap:10px}
 h2 .n{background:var(--amber);color:#1b1a17;font-family:var(--f-mono);font-size:.8rem;padding:1px 7px;border-radius:3px}
 section{margin-top:28px;display:flex;flex-direction:column;gap:12px}
@@ -133,7 +136,7 @@ details.ajustes .grid{margin-top:10px}
 <header class="band">
   <div class="wrap">
     <div>
-      <h1>Propuesta programa semanal de mantenimiento</h1>
+      <h1><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#f5b301"/><path d="M9 16.5l4.5 4.5L23 11.5" fill="none" stroke="#1b1a17" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Propuesta programa semanal de mantenimiento</span></h1>
       <div class="sub" id="subtitulo">Cargando semana…</div>
     </div>
     <div class="corte" id="corte"></div>
