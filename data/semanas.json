@@ -12,7 +12,8 @@
   },
   "diasEquipo": {
    "Boomer 282 #3": 4,
-   "Pala ST1030 #4": 1
+   "Pala ST1030 #4": 1,
+   "Boltec S #1": 5
   },
   "equiposExtra": [],
   "trabajos": [
@@ -51,6 +52,25 @@
     "repuestos": "6060102720, 5590000092 y mangueras del sistema A/C",
     "repListos": "No",
     "responsable": "Alexander Maradiaga",
+    "estado": "Programado",
+    "obs": ""
+   },
+   {
+    "id": "mwm8qravehqup",
+    "dia": 5,
+    "inicio": "06:00",
+    "fin": "18:00",
+    "equipo": "Boltec S #1",
+    "portal": "Pioneer",
+    "ot": "",
+    "tipo": "PM (preventivo)",
+    "servicio": "No aplica",
+    "descripcion": "cambio de filtro hidraulico del tanque",
+    "prioridad": "3 Medio (14 días)",
+    "tecnicos": 1,
+    "repuestos": "6060102697 2und",
+    "repListos": "Sí",
+    "responsable": "Juan Arango (inspector)",
     "estado": "Programado",
     "obs": ""
    }
