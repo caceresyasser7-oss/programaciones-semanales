@@ -10,8 +10,30 @@
    "hhTecDia": 12,
    "diasLab": 7
   },
-  "diasEquipo": {},
+  "diasEquipo": {
+   "Boomer 282 #3": 4
+  },
   "equiposExtra": [],
-  "trabajos": []
+  "trabajos": [
+   {
+    "id": "mwm8b4g85e74f",
+    "dia": 4,
+    "inicio": "06:00",
+    "fin": "18:00",
+    "equipo": "Boomer 282 #3",
+    "portal": "Pioneer",
+    "ot": "",
+    "tipo": "PM (preventivo)",
+    "servicio": "No aplica",
+    "descripcion": "cambio de filtro hidraulico del tanque",
+    "prioridad": "3 Medio (14 días)",
+    "tecnicos": 1,
+    "repuestos": "6060102697",
+    "repListos": "Sí",
+    "responsable": "Sergio Santana",
+    "estado": "Programado",
+    "obs": "filtro hidraulico saturado"
+   }
+  ]
  }
 }
