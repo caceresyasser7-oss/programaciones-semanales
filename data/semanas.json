@@ -322,6 +322,25 @@
     "responsable": "Juan Arango (inspector)",
     "estado": "Programado",
     "obs": ""
+   },
+   {
+    "id": "mwo4k7ibhicjq",
+    "dia": 4,
+    "inicio": "06:00",
+    "fin": "18:00",
+    "equipo": "Boomer 282 #3",
+    "portal": "Pioneer",
+    "ot": "",
+    "tipo": "PM (preventivo)",
+    "servicio": "No aplica",
+    "descripcion": "calibracion de RPM de rotacion de perforacion. ambas brocas. larga y corta, ambos brazos",
+    "prioridad": "3 Medio (14 días)",
+    "tecnicos": 2,
+    "repuestos": "",
+    "repListos": "",
+    "responsable": "",
+    "estado": "Programado",
+    "obs": ""
    }
   ]
  }
