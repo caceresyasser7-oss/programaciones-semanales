@@ -246,6 +246,25 @@
     "responsable": "",
     "estado": "Programado",
     "obs": ""
+   },
+   {
+    "id": "mwo483kwwnrs2",
+    "dia": 4,
+    "inicio": "06:00",
+    "fin": "18:00",
+    "equipo": "Boomer 282 #3",
+    "portal": "Pioneer",
+    "ot": "",
+    "tipo": "PM (preventivo)",
+    "servicio": "No aplica",
+    "descripcion": "cambio de luz trasera de trabajo lado derecho",
+    "prioridad": "3 Medio (14 días)",
+    "tecnicos": 1,
+    "repuestos": "3176002818",
+    "repListos": "",
+    "responsable": "",
+    "estado": "Programado",
+    "obs": ""
    }
   ]
  }
