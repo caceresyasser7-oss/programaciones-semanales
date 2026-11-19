@@ -189,6 +189,25 @@
     "responsable": "Juan Arango (inspector)",
     "estado": "Programado",
     "obs": ""
+   },
+   {
+    "id": "mwo2oela55ked",
+    "dia": 1,
+    "inicio": "06:00",
+    "fin": "18:00",
+    "equipo": "Pala ST1030 #5",
+    "portal": "Pioneer",
+    "ot": "",
+    "tipo": "PM (preventivo)",
+    "servicio": "No aplica",
+    "descripcion": "lavado de radiador y deteccion de fuga de aceite de motor",
+    "prioridad": "3 Medio (14 días)",
+    "tecnicos": 2,
+    "repuestos": "",
+    "repListos": "",
+    "responsable": "",
+    "estado": "Programado",
+    "obs": ""
    }
   ]
  }
