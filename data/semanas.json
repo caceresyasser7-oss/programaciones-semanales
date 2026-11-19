@@ -13,7 +13,8 @@
   "diasEquipo": {
    "Boomer 282 #3": 4,
    "Pala ST1030 #4": 1,
-   "Boltec S #1": 5
+   "Boltec S #1": 5,
+   "Simba S7D #2": 6
   },
   "equiposExtra": [],
   "trabajos": [
@@ -92,6 +93,25 @@
     "responsable": "sergio santana",
     "estado": "Reprogramado",
     "obs": "mantenimiento de 750 horas"
+   },
+   {
+    "id": "mwo0kglj130r2",
+    "dia": 6,
+    "inicio": "06:00",
+    "fin": "18:00",
+    "equipo": "Simba S7D #2",
+    "portal": "Pioneer",
+    "ot": "",
+    "tipo": "Cambio de componente",
+    "servicio": "No aplica",
+    "descripcion": "cambio de componentes de reguladores de presión",
+    "prioridad": "3 Medio (14 días)",
+    "tecnicos": 1,
+    "repuestos": "9236050981",
+    "repListos": "No",
+    "responsable": "Felipe Arango",
+    "estado": "Programado",
+    "obs": ""
    }
   ]
  }
