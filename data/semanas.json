@@ -150,6 +150,25 @@
     "responsable": "Juan Arango (inspector)",
     "estado": "Programado",
     "obs": ""
+   },
+   {
+    "id": "mwo1eo9aqjnej",
+    "dia": 6,
+    "inicio": "06:00",
+    "fin": "18:00",
+    "equipo": "Simba S7D #2",
+    "portal": "Pioneer",
+    "ot": "",
+    "tipo": "PM (preventivo)",
+    "servicio": "No aplica",
+    "descripcion": "cambio de eje de transmision del simba. La chumacera se encuentra con juego excesivo",
+    "prioridad": "3 Medio (14 días)",
+    "tecnicos": 1,
+    "repuestos": "5112017477",
+    "repListos": "",
+    "responsable": "Juan Arango (inspector)",
+    "estado": "Programado",
+    "obs": ""
    }
   ]
  }
