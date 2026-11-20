@@ -2,7 +2,7 @@
  "2026-11-23": {
   "lunes": "2026-11-23",
   "semana": 48,
-  "estado": "abierta",
+  "estado": "cerrada",
   "creadaEn": "2026-11-18T14:39:52.115Z",
   "config": {
    "planificador": "Yasser Caceres Rios",
@@ -342,6 +342,9 @@
     "estado": "Programado",
     "obs": ""
    }
-  ]
+  ],
+  "emision": "2026-11-20",
+  "cerradaEn": "2026-11-20T21:34:45.452Z",
+  "cerradaPor": "automático"
  }
 }
