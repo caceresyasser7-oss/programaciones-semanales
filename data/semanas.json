@@ -346,5 +346,20 @@
   "emision": "2026-11-20",
   "cerradaEn": "2026-11-20T21:34:45.452Z",
   "cerradaPor": "automático"
+ },
+ "2026-11-30": {
+  "lunes": "2026-11-30",
+  "semana": 49,
+  "estado": "abierta",
+  "creadaEn": "2026-11-20T21:46:29.093Z",
+  "config": {
+   "planificador": "Yasser Caceres Rios",
+   "tecnicos": 11,
+   "hhTecDia": 12,
+   "diasLab": 7
+  },
+  "diasEquipo": {},
+  "equiposExtra": [],
+  "trabajos": []
  }
 }
