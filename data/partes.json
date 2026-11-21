@@ -283,20 +283,6 @@
    "obs": "Componente prestado, ya devuelto/sustituido: pasa a histórico."
   },
   {
-   "id": "x010",
-   "equipo": "ST1030 #5",
-   "fechaRegistro": "2026-10-05",
-   "sistema": "Motor diésel",
-   "np": null,
-   "descripcion": "Mantenimiento de 1000 horas",
-   "vida": 185,
-   "contador": "Motor",
-   "horoInst": 10829,
-   "fechaInst": "2026-10-05",
-   "tipo": "Sí",
-   "obs": null
-  },
-  {
    "id": "x011",
    "equipo": "ST1030 #5",
    "fechaRegistro": "2026-10-05",
