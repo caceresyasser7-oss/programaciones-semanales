@@ -7,7 +7,7 @@
     {
      "nombre": "Motor",
      "lectura": 11727.2,
-     "uso": 12.0,
+     "uso": 12,
      "fecha": "2026-10-16"
     }
    ]
@@ -18,7 +18,7 @@
     {
      "nombre": "Motor",
      "lectura": 9872.2,
-     "uso": 12.0,
+     "uso": 12,
      "fecha": null
     }
    ]
@@ -29,7 +29,7 @@
     {
      "nombre": "Motor",
      "lectura": 9279.3,
-     "uso": 12.0,
+     "uso": 12,
      "fecha": null
     }
    ]
@@ -40,7 +40,7 @@
     {
      "nombre": "Motor",
      "lectura": 11020.4,
-     "uso": 12.0,
+     "uso": 12,
      "fecha": "2026-10-19"
     }
    ]
@@ -51,19 +51,19 @@
     {
      "nombre": "HD",
      "lectura": 1270.5,
-     "uso": 10.0,
+     "uso": 10,
      "fecha": "2026-10-20"
     },
     {
      "nombre": "HP",
      "lectura": 489.4,
-     "uso": 4.0,
+     "uso": 4,
      "fecha": "2026-10-20"
     },
     {
      "nombre": "HE",
      "lectura": 5756.4,
-     "uso": 8.0,
+     "uso": 8,
      "fecha": "2026-10-20"
     }
    ]
@@ -73,20 +73,20 @@
    "contadores": [
     {
      "nombre": "HD",
-     "lectura": 1019.0,
-     "uso": 10.0,
+     "lectura": 1019,
+     "uso": 10,
      "fecha": null
     },
     {
      "nombre": "HP",
-     "lectura": 129.0,
-     "uso": 4.0,
+     "lectura": 129,
+     "uso": 4,
      "fecha": null
     },
     {
      "nombre": "HE",
-     "lectura": 3589.0,
-     "uso": 8.0,
+     "lectura": 3589,
+     "uso": 8,
      "fecha": "2026-10-16"
     }
    ]
@@ -97,19 +97,19 @@
     {
      "nombre": "HM",
      "lectura": 2318.8,
-     "uso": 10.0,
+     "uso": 10,
      "fecha": "2026-10-20"
     },
     {
      "nombre": "HP1",
      "lectura": 1272.9,
-     "uso": 4.0,
+     "uso": 4,
      "fecha": "2026-10-20"
     },
     {
      "nombre": "HP2",
      "lectura": 1440.1,
-     "uso": 4.0,
+     "uso": 4,
      "fecha": "2026-10-20"
     }
    ]
@@ -120,7 +120,7 @@
     {
      "nombre": "Motor",
      "lectura": 1755.7,
-     "uso": 8.0,
+     "uso": 8,
      "fecha": "2026-10-20"
     }
    ]
@@ -131,25 +131,25 @@
     {
      "nombre": "Motor",
      "lectura": 3482.6,
-     "uso": 8.0,
+     "uso": 8,
      "fecha": "2026-10-20"
     },
     {
      "nombre": "motor electrico",
      "lectura": 4836.54,
-     "uso": 8.0,
+     "uso": 8,
      "fecha": "2026-10-20"
     },
     {
      "nombre": "percusion",
      "lectura": 1458.79,
-     "uso": 4.0,
+     "uso": 4,
      "fecha": "2026-10-20"
     },
     {
      "nombre": "empernador",
      "lectura": 198.24,
-     "uso": 4.0,
+     "uso": 4,
      "fecha": "2026-10-20"
     }
    ]
@@ -163,9 +163,9 @@
    "sistema": "Motor diésel",
    "np": "5580010292",
    "descripcion": "Turbocompresor",
-   "vida": 4000.0,
+   "vida": 4000,
    "contador": "Motor",
-   "horoInst": 11460.0,
+   "horoInst": 11460,
    "fechaInst": "2026-09-22",
    "tipo": "Sí",
    "obs": null
@@ -177,9 +177,9 @@
    "sistema": "Eléctrico",
    "np": "5580013176",
    "descripcion": "Espira",
-   "vida": 1000.0,
+   "vida": 1000,
    "contador": "Motor",
-   "horoInst": 11518.0,
+   "horoInst": 11518,
    "fechaInst": "2026-09-22",
    "tipo": "Sí",
    "obs": null
@@ -191,9 +191,9 @@
    "sistema": "Eléctrico",
    "np": "5580013176",
    "descripcion": "Espira",
-   "vida": 1000.0,
+   "vida": 1000,
    "contador": "Motor",
-   "horoInst": 9755.0,
+   "horoInst": 9755,
    "fechaInst": null,
    "tipo": "Sí",
    "obs": "Sin fecha de instalación."
@@ -205,7 +205,7 @@
    "sistema": "Motor diésel",
    "np": null,
    "descripcion": "Mantenimiento 500 horas",
-   "vida": 125.0,
+   "vida": 125,
    "contador": "Motor",
    "horoInst": 9026.9,
    "fechaInst": "2026-09-15",
@@ -219,7 +219,7 @@
    "sistema": "A/C",
    "np": "5541548100",
    "descripcion": "Compresor",
-   "vida": 4000.0,
+   "vida": 4000,
    "contador": "Motor",
    "horoInst": 9032.6,
    "fechaInst": "2026-09-18",
@@ -233,9 +233,9 @@
    "sistema": "Cabina",
    "np": "5541075800",
    "descripcion": "Pedal",
-   "vida": 6000.0,
+   "vida": 6000,
    "contador": "Motor",
-   "horoInst": 9053.0,
+   "horoInst": 9053,
    "fechaInst": "2026-09-20",
    "tipo": "Sí",
    "obs": null
@@ -247,9 +247,9 @@
    "sistema": "transmision",
    "np": "6060102633",
    "descripcion": "bearing",
-   "vida": 6000.0,
+   "vida": 6000,
    "contador": "Motor",
-   "horoInst": 9500.0,
+   "horoInst": 9500,
    "fechaInst": "2026-10-20",
    "tipo": "Sí",
    "obs": null
@@ -261,9 +261,9 @@
    "sistema": "Motor diésel",
    "np": null,
    "descripcion": "Mantenimiento de 500 horas",
-   "vida": 185.0,
+   "vida": 185,
    "contador": "Motor",
-   "horoInst": 10625.0,
+   "horoInst": 10625,
    "fechaInst": "2026-09-19",
    "tipo": "Registro",
    "obs": "Mantenimiento programado: solo registro, no genera alerta."
@@ -275,7 +275,7 @@
    "sistema": "Upbox",
    "np": null,
    "descripcion": "Se montó la upbox de la pala 1 (prestada)",
-   "vida": 70.0,
+   "vida": 70,
    "contador": "Motor",
    "horoInst": 10743.3,
    "fechaInst": "2026-09-28",
@@ -289,9 +289,9 @@
    "sistema": "Motor diésel",
    "np": null,
    "descripcion": "Mantenimiento de 1000 horas",
-   "vida": 185.0,
+   "vida": 185,
    "contador": "Motor",
-   "horoInst": 10829.0,
+   "horoInst": 10829,
    "fechaInst": "2026-10-05",
    "tipo": "Sí",
    "obs": null
@@ -303,9 +303,9 @@
    "sistema": "Transmisión",
    "np": null,
    "descripcion": "Se montó su upbox reparada",
-   "vida": 2500.0,
+   "vida": 2500,
    "contador": "Motor",
-   "horoInst": 10828.0,
+   "horoInst": 10828,
    "fechaInst": "2026-10-05",
    "tipo": "Sí",
    "obs": null
@@ -317,9 +317,9 @@
    "sistema": "Motor diésel",
    "np": "5580010292",
    "descripcion": "TURBO",
-   "vida": 2500.0,
+   "vida": 2500,
    "contador": "Motor",
-   "horoInst": 10888.0,
+   "horoInst": 10888,
    "fechaInst": "2026-10-10",
    "tipo": "Sí",
    "obs": null
@@ -331,7 +331,7 @@
    "sistema": "Avance",
    "np": "3128317550",
    "descripcion": "Hose drum",
-   "vida": 1200.0,
+   "vida": 1200,
    "contador": "HP",
    "horoInst": 437.9,
    "fechaInst": "2026-09-17",
@@ -345,7 +345,7 @@
    "sistema": "Avance",
    "np": "3128314104",
    "descripcion": "Pulley wheel",
-   "vida": 1200.0,
+   "vida": 1200,
    "contador": "HP",
    "horoInst": 437.9,
    "fechaInst": "2026-09-17",
@@ -359,7 +359,7 @@
    "sistema": "Avance",
    "np": "3115531400",
    "descripcion": "Driver",
-   "vida": 600.0,
+   "vida": 600,
    "contador": "HP",
    "horoInst": 437.9,
    "fechaInst": "2026-09-17",
@@ -373,7 +373,7 @@
    "sistema": "Motor diésel",
    "np": null,
    "descripcion": "Mantenimiento 250 h",
-   "vida": 125.0,
+   "vida": 125,
    "contador": "HD",
    "horoInst": 1209.4,
    "fechaInst": "2026-09-17",
@@ -387,9 +387,9 @@
    "sistema": null,
    "np": null,
    "descripcion": "Reparación parcial de perforadora 1838",
-   "vida": 200.0,
+   "vida": 200,
    "contador": "HP",
-   "horoInst": 447.0,
+   "horoInst": 447,
    "fechaInst": "2026-09-25",
    "tipo": "Sí",
    "obs": "VERIFICAR: HD (1226) y HE (5649) de instalación son mayores que la lectura actual; sin fecha, NP ni sistema."
@@ -401,9 +401,9 @@
    "sistema": "Boom",
    "np": "3128259241",
    "descripcion": "Cilindro hidráulico",
-   "vida": 2500.0,
+   "vida": 2500,
    "contador": "HP",
-   "horoInst": 120.0,
+   "horoInst": 120,
    "fechaInst": null,
    "tipo": "Sí",
    "obs": "Al instalar: HD 1000 · HE 3400"
@@ -415,7 +415,7 @@
    "sistema": "barrido",
    "np": "2901029801",
    "descripcion": "kit de reparacion de valvula de carga del compresor",
-   "vida": 2000.0,
+   "vida": 2000,
    "contador": "HP1",
    "horoInst": 1267.8,
    "fechaInst": "2026-10-18",
@@ -429,9 +429,9 @@
    "sistema": "Eje de accion",
    "np": "5572960200",
    "descripcion": "diferencial delantero completo",
-   "vida": 4000.0,
+   "vida": 4000,
    "contador": "Motor",
-   "horoInst": 1735.0,
+   "horoInst": 1735,
    "fechaInst": "2026-01-12",
    "tipo": "Sí",
    "obs": "se ha puesto el de la pala 3.5 #6 de martha850 al horometro 1901"
@@ -443,12 +443,27 @@
    "sistema": "barrido",
    "np": "2901029801",
    "descripcion": "kit de reparacion de la valvula reguladora del compresor",
-   "vida": 1200.0,
+   "vida": 1200,
    "contador": "percusion",
-   "horoInst": 1451.0,
+   "horoInst": 1451,
    "fechaInst": "2026-10-17",
    "tipo": "Sí",
    "obs": null
+  },
+  {
+   "id": "mwqyyst7pl9aa",
+   "equipo": "Boomer 282 #3",
+   "contador": "HP1",
+   "tipo": "Sí",
+   "fechaRegistro": "2026-11-21",
+   "sistema": "sistema hidraulico",
+   "np": "3217955410",
+   "descripcion": "HYDRAULIC PUMP. Fallo bomba del damping",
+   "fechaInst": "2026-11-21",
+   "obs": null,
+   "vida": 4000,
+   "horoInst": 1391,
+   "creado": "2026-11-21T22:18:16.027Z"
   }
  ],
  "catalogo": [
@@ -463,84 +478,84 @@
    "descripcion": "Turbocompresor",
    "equipos": "ST1030",
    "np": "5580010292",
-   "vida": 4000.0,
+   "vida": 4000,
    "contador": "Motor"
   },
   {
    "descripcion": "Compresor A/C",
    "equipos": "ST1030",
    "np": "5541548100",
-   "vida": 4000.0,
+   "vida": 4000,
    "contador": "Motor"
   },
   {
    "descripcion": "Pedal de cabina",
    "equipos": "ST1030",
    "np": "5541075800",
-   "vida": 6000.0,
+   "vida": 6000,
    "contador": "Motor"
   },
   {
    "descripcion": "Espira (eléctrico)",
    "equipos": "ST1030",
    "np": "5580013176",
-   "vida": 1000.0,
+   "vida": 1000,
    "contador": "Motor"
   },
   {
    "descripcion": "Hose drum",
    "equipos": "Simba S7D",
    "np": "3128317550",
-   "vida": 1200.0,
+   "vida": 1200,
    "contador": "HP"
   },
   {
    "descripcion": "Pulley wheel",
    "equipos": "Simba S7D",
    "np": "3128314104",
-   "vida": 1200.0,
+   "vida": 1200,
    "contador": "HP"
   },
   {
    "descripcion": "Driver",
    "equipos": "Simba S7D",
    "np": "3115531400",
-   "vida": 600.0,
+   "vida": 600,
    "contador": "HP"
   },
   {
    "descripcion": "Cilindro hidráulico (boom)",
    "equipos": "Boltec S10",
    "np": "3128259241",
-   "vida": 2500.0,
+   "vida": 2500,
    "contador": "HP"
   },
   {
    "descripcion": "Upbox de transmisión",
    "equipos": "ST1030",
    "np": null,
-   "vida": 2500.0,
+   "vida": 2500,
    "contador": "Motor"
   },
   {
    "descripcion": "Servicio de motor 125 h",
    "equipos": "Boomer 282",
    "np": null,
-   "vida": 125.0,
+   "vida": 125,
    "contador": "HM"
   },
   {
    "descripcion": "Servicio de motor 250 h",
    "equipos": "Simba S7D",
    "np": null,
-   "vida": 125.0,
+   "vida": 125,
    "contador": "HD"
   },
   {
    "descripcion": "Servicio de motor 500/1000 h",
    "equipos": "ST1030",
    "np": null,
-   "vida": 185.0,
+   "vida": 185,
    "contador": "Motor"
   }
  ]
