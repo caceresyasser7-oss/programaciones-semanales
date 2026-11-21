@@ -1,0 +1,547 @@
+{
+ "umbral": 50,
+ "equipos": [
+  {
+   "nombre": "ST1030 #2",
+   "contadores": [
+    {
+     "nombre": "Motor",
+     "lectura": 11727.2,
+     "uso": 12.0,
+     "fecha": "2026-10-16"
+    }
+   ]
+  },
+  {
+   "nombre": "ST1030 #3",
+   "contadores": [
+    {
+     "nombre": "Motor",
+     "lectura": 9872.2,
+     "uso": 12.0,
+     "fecha": null
+    }
+   ]
+  },
+  {
+   "nombre": "ST1030 #4",
+   "contadores": [
+    {
+     "nombre": "Motor",
+     "lectura": 9279.3,
+     "uso": 12.0,
+     "fecha": null
+    }
+   ]
+  },
+  {
+   "nombre": "ST1030 #5",
+   "contadores": [
+    {
+     "nombre": "Motor",
+     "lectura": 11020.4,
+     "uso": 12.0,
+     "fecha": "2026-10-19"
+    }
+   ]
+  },
+  {
+   "nombre": "Simba S7D #2",
+   "contadores": [
+    {
+     "nombre": "HD",
+     "lectura": 1270.5,
+     "uso": 10.0,
+     "fecha": "2026-10-20"
+    },
+    {
+     "nombre": "HP",
+     "lectura": 489.4,
+     "uso": 4.0,
+     "fecha": "2026-10-20"
+    },
+    {
+     "nombre": "HE",
+     "lectura": 5756.4,
+     "uso": 8.0,
+     "fecha": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "nombre": "Boltec S10 #2",
+   "contadores": [
+    {
+     "nombre": "HD",
+     "lectura": 1019.0,
+     "uso": 10.0,
+     "fecha": null
+    },
+    {
+     "nombre": "HP",
+     "lectura": 129.0,
+     "uso": 4.0,
+     "fecha": null
+    },
+    {
+     "nombre": "HE",
+     "lectura": 3589.0,
+     "uso": 8.0,
+     "fecha": "2026-10-16"
+    }
+   ]
+  },
+  {
+   "nombre": "Boomer 282 #3",
+   "contadores": [
+    {
+     "nombre": "HM",
+     "lectura": 2318.8,
+     "uso": 10.0,
+     "fecha": "2026-10-20"
+    },
+    {
+     "nombre": "HP1",
+     "lectura": 1272.9,
+     "uso": 4.0,
+     "fecha": "2026-10-20"
+    },
+    {
+     "nombre": "HP2",
+     "lectura": 1440.1,
+     "uso": 4.0,
+     "fecha": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "nombre": "ST3.5 #5",
+   "contadores": [
+    {
+     "nombre": "Motor",
+     "lectura": 1755.7,
+     "uso": 8.0,
+     "fecha": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "nombre": "Boltec S #1",
+   "contadores": [
+    {
+     "nombre": "Motor",
+     "lectura": 3482.6,
+     "uso": 8.0,
+     "fecha": "2026-10-20"
+    },
+    {
+     "nombre": "motor electrico",
+     "lectura": 4836.54,
+     "uso": 8.0,
+     "fecha": "2026-10-20"
+    },
+    {
+     "nombre": "percusion",
+     "lectura": 1458.79,
+     "uso": 4.0,
+     "fecha": "2026-10-20"
+    },
+    {
+     "nombre": "empernador",
+     "lectura": 198.24,
+     "uso": 4.0,
+     "fecha": "2026-10-20"
+    }
+   ]
+  }
+ ],
+ "registros": [
+  {
+   "id": "x001",
+   "equipo": "ST1030 #2",
+   "fechaRegistro": "2026-09-23",
+   "sistema": "Motor diésel",
+   "np": "5580010292",
+   "descripcion": "Turbocompresor",
+   "vida": 4000.0,
+   "contador": "Motor",
+   "horoInst": 11460.0,
+   "fechaInst": "2026-09-22",
+   "tipo": "Sí",
+   "obs": null
+  },
+  {
+   "id": "x002",
+   "equipo": "ST1030 #2",
+   "fechaRegistro": "2026-09-28",
+   "sistema": "Eléctrico",
+   "np": "5580013176",
+   "descripcion": "Espira",
+   "vida": 1000.0,
+   "contador": "Motor",
+   "horoInst": 11518.0,
+   "fechaInst": "2026-09-22",
+   "tipo": "Sí",
+   "obs": null
+  },
+  {
+   "id": "x003",
+   "equipo": "ST1030 #3",
+   "fechaRegistro": "2026-09-22",
+   "sistema": "Eléctrico",
+   "np": "5580013176",
+   "descripcion": "Espira",
+   "vida": 1000.0,
+   "contador": "Motor",
+   "horoInst": 9755.0,
+   "fechaInst": null,
+   "tipo": "Sí",
+   "obs": "Sin fecha de instalación."
+  },
+  {
+   "id": "x004",
+   "equipo": "ST1030 #4",
+   "fechaRegistro": "2026-09-14",
+   "sistema": "Motor diésel",
+   "np": null,
+   "descripcion": "Mantenimiento 500 horas",
+   "vida": 125.0,
+   "contador": "Motor",
+   "horoInst": 9026.9,
+   "fechaInst": "2026-09-15",
+   "tipo": "Registro",
+   "obs": "Mantenimiento programado: solo registro, no genera alerta."
+  },
+  {
+   "id": "x005",
+   "equipo": "ST1030 #4",
+   "fechaRegistro": "2026-09-18",
+   "sistema": "A/C",
+   "np": "5541548100",
+   "descripcion": "Compresor",
+   "vida": 4000.0,
+   "contador": "Motor",
+   "horoInst": 9032.6,
+   "fechaInst": "2026-09-18",
+   "tipo": "Sí",
+   "obs": null
+  },
+  {
+   "id": "x006",
+   "equipo": "ST1030 #4",
+   "fechaRegistro": "2026-09-20",
+   "sistema": "Cabina",
+   "np": "5541075800",
+   "descripcion": "Pedal",
+   "vida": 6000.0,
+   "contador": "Motor",
+   "horoInst": 9053.0,
+   "fechaInst": "2026-09-20",
+   "tipo": "Sí",
+   "obs": null
+  },
+  {
+   "id": "x007",
+   "equipo": "ST1030 #4",
+   "fechaRegistro": "2026-10-20",
+   "sistema": "transmision",
+   "np": "6060102633",
+   "descripcion": "bearing",
+   "vida": 6000.0,
+   "contador": "Motor",
+   "horoInst": 9500.0,
+   "fechaInst": "2026-10-20",
+   "tipo": "Sí",
+   "obs": null
+  },
+  {
+   "id": "x008",
+   "equipo": "ST1030 #5",
+   "fechaRegistro": "2026-09-19",
+   "sistema": "Motor diésel",
+   "np": null,
+   "descripcion": "Mantenimiento de 500 horas",
+   "vida": 185.0,
+   "contador": "Motor",
+   "horoInst": 10625.0,
+   "fechaInst": "2026-09-19",
+   "tipo": "Registro",
+   "obs": "Mantenimiento programado: solo registro, no genera alerta."
+  },
+  {
+   "id": "x009",
+   "equipo": "ST1030 #5",
+   "fechaRegistro": null,
+   "sistema": "Upbox",
+   "np": null,
+   "descripcion": "Se montó la upbox de la pala 1 (prestada)",
+   "vida": 70.0,
+   "contador": "Motor",
+   "horoInst": 10743.3,
+   "fechaInst": "2026-09-28",
+   "tipo": "No",
+   "obs": "Componente prestado, ya devuelto/sustituido: pasa a histórico."
+  },
+  {
+   "id": "x010",
+   "equipo": "ST1030 #5",
+   "fechaRegistro": "2026-10-05",
+   "sistema": "Motor diésel",
+   "np": null,
+   "descripcion": "Mantenimiento de 1000 horas",
+   "vida": 185.0,
+   "contador": "Motor",
+   "horoInst": 10829.0,
+   "fechaInst": "2026-10-05",
+   "tipo": "Sí",
+   "obs": null
+  },
+  {
+   "id": "x011",
+   "equipo": "ST1030 #5",
+   "fechaRegistro": "2026-10-05",
+   "sistema": "Transmisión",
+   "np": null,
+   "descripcion": "Se montó su upbox reparada",
+   "vida": 2500.0,
+   "contador": "Motor",
+   "horoInst": 10828.0,
+   "fechaInst": "2026-10-05",
+   "tipo": "Sí",
+   "obs": null
+  },
+  {
+   "id": "x012",
+   "equipo": "ST1030 #5",
+   "fechaRegistro": "2026-10-10",
+   "sistema": "Motor diésel",
+   "np": "5580010292",
+   "descripcion": "TURBO",
+   "vida": 2500.0,
+   "contador": "Motor",
+   "horoInst": 10888.0,
+   "fechaInst": "2026-10-10",
+   "tipo": "Sí",
+   "obs": null
+  },
+  {
+   "id": "x013",
+   "equipo": "Simba S7D #2",
+   "fechaRegistro": "2026-09-17",
+   "sistema": "Avance",
+   "np": "3128317550",
+   "descripcion": "Hose drum",
+   "vida": 1200.0,
+   "contador": "HP",
+   "horoInst": 437.9,
+   "fechaInst": "2026-09-17",
+   "tipo": "Sí",
+   "obs": "Al instalar: HD 1208.8 · HE 5616.2"
+  },
+  {
+   "id": "x014",
+   "equipo": "Simba S7D #2",
+   "fechaRegistro": "2026-09-17",
+   "sistema": "Avance",
+   "np": "3128314104",
+   "descripcion": "Pulley wheel",
+   "vida": 1200.0,
+   "contador": "HP",
+   "horoInst": 437.9,
+   "fechaInst": "2026-09-17",
+   "tipo": "Sí",
+   "obs": "Al instalar: HD 1208.9 · HE 5616.3"
+  },
+  {
+   "id": "x015",
+   "equipo": "Simba S7D #2",
+   "fechaRegistro": "2026-09-17",
+   "sistema": "Avance",
+   "np": "3115531400",
+   "descripcion": "Driver",
+   "vida": 600.0,
+   "contador": "HP",
+   "horoInst": 437.9,
+   "fechaInst": "2026-09-17",
+   "tipo": "Sí",
+   "obs": "Al instalar: HD 1208.9 · HE 5616.4"
+  },
+  {
+   "id": "x016",
+   "equipo": "Simba S7D #2",
+   "fechaRegistro": "2026-09-17",
+   "sistema": "Motor diésel",
+   "np": null,
+   "descripcion": "Mantenimiento 250 h",
+   "vida": 125.0,
+   "contador": "HD",
+   "horoInst": 1209.4,
+   "fechaInst": "2026-09-17",
+   "tipo": "Registro",
+   "obs": "Mantenimiento programado: solo registro. Al realizarlo: HP 436 · HE 5616."
+  },
+  {
+   "id": "x017",
+   "equipo": "Simba S7D #2",
+   "fechaRegistro": null,
+   "sistema": null,
+   "np": null,
+   "descripcion": "Reparación parcial de perforadora 1838",
+   "vida": 200.0,
+   "contador": "HP",
+   "horoInst": 447.0,
+   "fechaInst": "2026-09-25",
+   "tipo": "Sí",
+   "obs": "VERIFICAR: HD (1226) y HE (5649) de instalación son mayores que la lectura actual; sin fecha, NP ni sistema."
+  },
+  {
+   "id": "x018",
+   "equipo": "Boltec S10 #2",
+   "fechaRegistro": "2026-09-21",
+   "sistema": "Boom",
+   "np": "3128259241",
+   "descripcion": "Cilindro hidráulico",
+   "vida": 2500.0,
+   "contador": "HP",
+   "horoInst": 120.0,
+   "fechaInst": null,
+   "tipo": "Sí",
+   "obs": "Al instalar: HD 1000 · HE 3400"
+  },
+  {
+   "id": "x019",
+   "equipo": "Boomer 282 #3",
+   "fechaRegistro": "2026-10-18",
+   "sistema": "barrido",
+   "np": "2901029801",
+   "descripcion": "kit de reparacion de valvula de carga del compresor",
+   "vida": 2000.0,
+   "contador": "HP1",
+   "horoInst": 1267.8,
+   "fechaInst": "2026-10-18",
+   "tipo": "Sí",
+   "obs": null
+  },
+  {
+   "id": "x020",
+   "equipo": "ST3.5 #5",
+   "fechaRegistro": "2026-01-12",
+   "sistema": "Eje de accion",
+   "np": "5572960200",
+   "descripcion": "diferencial delantero completo",
+   "vida": 4000.0,
+   "contador": "Motor",
+   "horoInst": 1735.0,
+   "fechaInst": "2026-01-12",
+   "tipo": "Sí",
+   "obs": "se ha puesto el de la pala 3.5 #6 de martha850 al horometro 1901"
+  },
+  {
+   "id": "x021",
+   "equipo": "Boltec S #1",
+   "fechaRegistro": "2026-10-17",
+   "sistema": "barrido",
+   "np": "2901029801",
+   "descripcion": "kit de reparacion de la valvula reguladora del compresor",
+   "vida": 1200.0,
+   "contador": "percusion",
+   "horoInst": 1451.0,
+   "fechaInst": "2026-10-17",
+   "tipo": "Sí",
+   "obs": null
+  }
+ ],
+ "catalogo": [
+  {
+   "descripcion": "Componente",
+   "equipos": "Equipos donde aparece",
+   "np": "NP de referencia",
+   "vida": null,
+   "contador": "Contador"
+  },
+  {
+   "descripcion": "Turbocompresor",
+   "equipos": "ST1030",
+   "np": "5580010292",
+   "vida": 4000.0,
+   "contador": "Motor"
+  },
+  {
+   "descripcion": "Compresor A/C",
+   "equipos": "ST1030",
+   "np": "5541548100",
+   "vida": 4000.0,
+   "contador": "Motor"
+  },
+  {
+   "descripcion": "Pedal de cabina",
+   "equipos": "ST1030",
+   "np": "5541075800",
+   "vida": 6000.0,
+   "contador": "Motor"
+  },
+  {
+   "descripcion": "Espira (eléctrico)",
+   "equipos": "ST1030",
+   "np": "5580013176",
+   "vida": 1000.0,
+   "contador": "Motor"
+  },
+  {
+   "descripcion": "Hose drum",
+   "equipos": "Simba S7D",
+   "np": "3128317550",
+   "vida": 1200.0,
+   "contador": "HP"
+  },
+  {
+   "descripcion": "Pulley wheel",
+   "equipos": "Simba S7D",
+   "np": "3128314104",
+   "vida": 1200.0,
+   "contador": "HP"
+  },
+  {
+   "descripcion": "Driver",
+   "equipos": "Simba S7D",
+   "np": "3115531400",
+   "vida": 600.0,
+   "contador": "HP"
+  },
+  {
+   "descripcion": "Cilindro hidráulico (boom)",
+   "equipos": "Boltec S10",
+   "np": "3128259241",
+   "vida": 2500.0,
+   "contador": "HP"
+  },
+  {
+   "descripcion": "Upbox de transmisión",
+   "equipos": "ST1030",
+   "np": null,
+   "vida": 2500.0,
+   "contador": "Motor"
+  },
+  {
+   "descripcion": "Servicio de motor 125 h",
+   "equipos": "Boomer 282",
+   "np": null,
+   "vida": 125.0,
+   "contador": "HM"
+  },
+  {
+   "descripcion": "Servicio de motor 250 h",
+   "equipos": "Simba S7D",
+   "np": null,
+   "vida": 125.0,
+   "contador": "HD"
+  },
+  {
+   "descripcion": "Servicio de motor 500/1000 h",
+   "equipos": "ST1030",
+   "np": null,
+   "vida": 185.0,
+   "contador": "Motor"
+  }
+ ]
+}

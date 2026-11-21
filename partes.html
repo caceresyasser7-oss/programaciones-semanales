@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Partes Montadas</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2715%27 fill=%27%23f5b301%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%275.5%27 fill=%27none%27 stroke=%27%231b1a17%27 stroke-width=%273.5%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Misma línea visual que el programa semanal: banda negra + ámbar. Buscador arriba, luego alertas, luego equipos. */
+:root{
+  --bg:#f6f5f1; --panel:#ffffff; --ink:#1b1a17; --muted:#6b675d; --line:#e1ddd2;
+  --band:#1b1a17; --band-ink:#f6f5f1; --amber:#f5b301; --amber-soft:#fdf1cc; --amber-ink:#5a4100;
+  --ok:#1f7a3f; --ok-soft:#dcf1e2; --warn:#b85c00; --warn-soft:#fde6cf; --bad:#b3261e; --bad-soft:#f9dcda;
+  --info:#2457a6; --info-soft:#dde8f8;
+  --f-display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141412; --panel:#1d1c19; --ink:#efece4; --muted:#a29d90; --line:#34322c;
+  --band:#0b0b0a; --band-ink:#efece4; --amber:#f5b301; --amber-soft:#3b2f0b; --amber-ink:#ffd970;
+  --ok:#6fcf8f; --ok-soft:#173523; --warn:#f5a25a; --warn-soft:#3d2610; --bad:#f08a83; --bad-soft:#3e1a18;
+  --info:#8fb5f0; --info-soft:#1a2740; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141412; --panel:#1d1c19; --ink:#efece4; --muted:#a29d90; --line:#34322c;
+  --band:#0b0b0a; --band-ink:#efece4; --amber:#f5b301; --amber-soft:#3b2f0b; --amber-ink:#ffd970;
+  --ok:#6fcf8f; --ok-soft:#173523; --warn:#f5a25a; --warn-soft:#3d2610; --bad:#f08a83; --bad-soft:#3e1a18;
+  --info:#8fb5f0; --info-soft:#1a2740; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+header.band{background:var(--band);color:var(--band-ink);border-bottom:4px solid var(--amber)}
+header.band .wrap{padding-block:18px 16px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between}
+h1{font-family:var(--f-display);font-weight:700;font-size:1.9rem;letter-spacing:.02em;text-transform:uppercase;margin:0;line-height:1.05;display:flex;align-items:center;gap:10px;text-wrap:balance}
+.logo{width:1.1em;height:1.1em;flex:0 0 auto}
+.sub{color:var(--amber);font-family:var(--f-display);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.95rem;margin-top:4px}
+.sub a{color:inherit}
+.corte{display:flex;flex-direction:column;align-items:flex-end;gap:6px;font-size:.85rem;color:#cfcabd}
+.corte .fila{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.corte button{background:transparent;color:var(--band-ink);border-color:#4a4740}
+h2{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:1.15rem;margin:0;display:flex;align-items:center;gap:10px}
+h2 .n{background:var(--amber);color:#1b1a17;font-family:var(--f-mono);font-size:.8rem;padding:1px 7px;border-radius:3px}
+section{margin-top:28px;display:flex;flex-direction:column;gap:12px}
+.sec-head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.hint{color:var(--muted);font-size:.88rem;margin:0}
+button{font:inherit;cursor:pointer;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:7px 12px;font-weight:600}
+button:hover{border-color:var(--muted)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--amber);outline-offset:1px}
+button.primary{background:var(--amber);border-color:var(--amber);color:#1b1a17}
+button.ghost{background:transparent;border-color:transparent;color:var(--muted);padding:5px 8px}
+button.ghost:hover{color:var(--ink);background:var(--line)}
+button.danger{color:var(--bad)}
+button:disabled{opacity:.5;cursor:not-allowed}
+select,input,textarea{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:6px 8px;width:100%;min-width:0}
+textarea{resize:vertical;min-height:54px}
+/* buscador */
+.buscador{background:var(--panel);border:2px solid var(--amber);border-radius:10px;padding:14px;margin-top:20px;display:flex;flex-direction:column;gap:10px}
+.buscador label{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:1.05rem}
+.caja{position:relative}
+.caja input{font-size:1.25rem;padding:12px 44px 12px 14px;font-family:var(--f-mono);font-weight:500;border-width:2px}
+.caja button{position:absolute;right:6px;top:50%;transform:translateY(-50%)}
+.res-vacio{color:var(--muted);font-size:.92rem}
+.res-resumen{font-size:.92rem}
+.res-resumen b{font-family:var(--f-mono);font-weight:500}
+.hits{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px}
+.hit{border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:4px;background:var(--bg)}
+.hit .top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.hit .np{font-family:var(--f-mono);font-weight:500;font-size:1.02rem}
+.hit .np mark{background:var(--amber-soft);color:var(--amber-ink);border-radius:2px}
+.hit .eq{font-weight:700}
+.hit .det{font-size:.84rem;color:var(--muted)}
+.hit.cat{border-style:dashed}
+/* kpis */
+.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:20px}
+.kpi{background:var(--panel);padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.kpi span{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.kpi b{font-family:var(--f-mono);font-weight:500;font-size:1.45rem;font-variant-numeric:tabular-nums}
+.kpi.bad b{color:var(--bad)} .kpi.warn b{color:var(--warn)} .kpi.ok b{color:var(--ok)} .kpi.info b{color:var(--info)}
+/* tablas */
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.tabla{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.86rem}
+th{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left;font-weight:700;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num,th.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+td.mono{font-family:var(--f-mono);white-space:nowrap}
+td.acc{white-space:nowrap;text-align:right}
+td.obs{color:var(--muted);font-size:.8rem;min-width:140px;max-width:260px}
+tr.apagado td{color:var(--muted)}
+.vacio{padding:12px;color:var(--muted);font-size:.88rem}
+.chip{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.03em;padding:2px 7px;border-radius:4px;white-space:nowrap;text-transform:uppercase}
+.st-VENCIDO{background:var(--bad-soft);color:var(--bad)}
+.st-PROXIMO{background:var(--warn-soft);color:var(--warn)}
+.st-OK{background:var(--ok-soft);color:var(--ok)}
+.st-REVISAR{background:var(--info-soft);color:var(--info)}
+.st-REGISTRO,.st-HISTORICO{background:var(--line);color:var(--muted)}
+/* equipos */
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{display:flex;gap:6px;align-items:center;padding:6px 10px}
+.tab[aria-pressed="true"]{background:var(--band);color:var(--band-ink);border-color:var(--band)}
+.tab .dot{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.tab .dot.bad{background:var(--bad)} .tab .dot.warn{background:var(--warn)} .tab .dot.info{background:var(--info)}
+.eq-head{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--band);color:var(--band-ink)}
+.eq-head .t{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:1.15rem}
+.eq-head button{background:transparent;color:var(--band-ink);border-color:#4a4740}
+.eq-head button.primary{background:var(--amber);color:#1b1a17;border-color:var(--amber)}
+.contadores{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.cont{flex:0 1 260px;min-width:220px;border-right:1px solid var(--line);padding:10px 12px;display:grid;grid-template-columns:1fr 1fr;gap:6px 8px;align-items:end}
+.cont .nom{grid-column:1/-1;font-weight:700;display:flex;justify-content:space-between;gap:6px;align-items:center}
+.cont label{display:flex;flex-direction:column;gap:2px;font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.cont input{font-family:var(--f-mono);padding:5px 6px}
+.viejo{font-size:.72rem;font-weight:700;color:var(--warn);text-transform:none;letter-spacing:0}
+/* formulario */
+.form{background:var(--panel);border:2px solid var(--amber);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:12px}
+.form h3{margin:0;font-family:var(--f-display);text-transform:uppercase;letter-spacing:.05em;font-size:1.05rem}
+.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.grid label{display:flex;flex-direction:column;gap:3px;font-size:.74rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;min-width:0}
+.c2{grid-column:span 2}.c3{grid-column:span 3}.c4{grid-column:span 4}.c6{grid-column:span 6}
+.calc{font-family:var(--f-mono);font-size:.92rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px 10px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
+.calc span{color:var(--muted);font-family:var(--f-body);font-size:.8rem}
+.aviso-np{font-size:.85rem;padding:8px 10px;border-radius:6px;background:var(--amber-soft);color:var(--amber-ink)}
+.check{flex-direction:row!important;align-items:center;gap:8px!important;text-transform:none!important;letter-spacing:0!important;font-size:.86rem!important;color:var(--ink)!important}
+.check input{width:auto}
+.form-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.err{color:var(--bad);font-size:.85rem;margin:0}
+details.ajustes{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+details.ajustes summary{cursor:pointer;font-weight:700}
+details.ajustes .grid{margin-top:10px}
+.banner{border:1px solid var(--line);border-left:4px solid var(--info);background:var(--info-soft);padding:10px 14px;border-radius:6px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;margin-top:18px}
+.banner.warn{border-left-color:var(--warn);background:var(--warn-soft)}
+.conexion{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;padding:16px;z-index:30}
+.conexion .form{max-width:520px;width:100%}
+.conexion label{display:flex;flex-direction:column;gap:4px;font-weight:700;font-size:.8rem}
+.conexion a{color:var(--info)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));background:var(--band);color:var(--band-ink);padding:10px 16px;border-radius:8px;border-left:4px solid var(--amber);font-size:.9rem;max-width:calc(100% - 32px);z-index:40}
+@media (max-width:820px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpis .kpi:first-child{grid-column:span 2}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .c2,.c3,.c4,.c6{grid-column:span 2}
+  .corte{align-items:flex-start}.corte .fila{justify-content:flex-start}
+  h1{font-size:1.5rem}
+  .caja input{font-size:1.05rem}
+}
+</style>
+</head>
+<body>
+
+<header class="band">
+  <div class="wrap">
+    <div>
+      <h1><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#f5b301"/><circle cx="16" cy="16" r="5.5" fill="none" stroke="#1b1a17" stroke-width="3.5"/></svg><span>Registro de partes montadas</span></h1>
+      <div class="sub">Seguimiento de componentes por equipo · <a href="./">Programa semanal</a></div>
+    </div>
+    <div class="corte">
+      <div class="fila"><span id="estado-guardado">Cargando…</span><button id="btn-conectar" type="button">Conectar GitHub</button></div>
+      <div>Hoy <b id="hoy" style="font-family:var(--f-mono);font-weight:500;color:var(--band-ink)"></b></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="aviso" class="banner" hidden></div>
+
+  <div class="buscador">
+    <label for="q">Verificar número de parte</label>
+    <div class="caja">
+      <input id="q" type="text" enterkeyhint="search" autocomplete="off" placeholder="Escriba el NP o parte de la descripción (ej. 5580010292, turbo)">
+      <button id="q-limpiar" class="ghost" type="button" aria-label="Limpiar" hidden>✕</button>
+    </div>
+    <div id="resultados"><p class="res-vacio">Busca en todos los equipos y en el catálogo. No importan espacios ni guiones.</p></div>
+  </div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <section>
+    <div class="sec-head">
+      <h2><span class="n">1</span>Atención</h2>
+      <p class="hint">Partes vencidas o por vencer, de la más urgente a la menos. Abajo, las que tienen datos incompletos.</p>
+    </div>
+    <div class="panel tabla" id="atencion"></div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2><span class="n">2</span>Equipos</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button id="btn-csv" type="button">Descargar CSV</button>
+        <button id="btn-nuevo" class="primary" type="button">+ Registrar parte montada</button>
+      </div>
+    </div>
+    <div class="tabs" id="tabs" role="toolbar" aria-label="Equipos"></div>
+    <div id="formulario"></div>
+    <div class="panel" id="equipo"></div>
+  </section>
+
+  <section>
+    <details class="ajustes">
+      <summary>Ajustes: umbral de alerta y equipos</summary>
+      <div class="grid">
+        <label class="c2">Avisar PRÓXIMO cuando falten (h)<input id="aj-umbral" type="number" min="0" step="1"></label>
+        <label class="c2" style="justify-content:flex-end"><button id="aj-guardar" type="button">Guardar umbral</button></label>
+        <div class="c6" style="border-top:1px solid var(--line);padding-top:10px"></div>
+        <label class="c2">Nuevo equipo<input id="ne-nombre" list="lista-equipos-cat" placeholder="Ej. Scalemin #2"></label>
+        <label class="c2">Contadores (separados por coma)<input id="ne-cont" placeholder="Motor, HP, HE"></label>
+        <label>Uso h/día<input id="ne-uso" type="number" min="0" step="0.5" value="8"></label>
+        <label style="justify-content:flex-end"><button id="ne-agregar" type="button">Agregar equipo</button></label>
+      </div>
+    </details>
+  </section>
+</main>
+
+<datalist id="lista-equipos-cat"></datalist>
+<datalist id="lista-sistemas"></datalist>
+<datalist id="lista-np"></datalist>
+
+<div class="conexion" id="conexion" hidden>
+  <form class="form" id="form-conexion" autocomplete="off">
+    <h3>Conectar con GitHub para guardar</h3>
+    <p class="hint">Es el mismo token del programa semanal: si ya se conectó allí en este navegador, aquí ya está conectado.
+      Si no, <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">cree un token</a>: en «Repository access» elija solo <b>programaciones-semanales</b>, y en «Permissions → Contents» elija <b>Read and write</b>.</p>
+    <label>Token<input id="tok" type="password" placeholder="github_pat_…"></label>
+    <p class="err" id="con-err"></p>
+    <div class="form-actions"><button type="button" id="con-cerrar">Cancelar</button><button class="primary" type="submit">Conectar</button></div>
+  </form>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+var REPO={owner:'caceresyasser7-oss',repo:'programaciones-semanales',branch:'main',path:'data/partes.json'};
+var EQUIPOS_CAT=['Pala ST1030 #1','Pala ST1030 #6','Simba S7D #1','Simba S7D #3','Boomer 282 #1','Boomer 282 #2','ST3.5 #6','Wagner #5','Scalemin #1','Scalemin #2','Elevador S44 #1'];
+
+// ---------- utilidades ----------
+function $(id){ return document.getElementById(id); }
+function el(tag,attrs,kids){ var e=document.createElement(tag); if(attrs) for(var k in attrs){ var v=attrs[k]; if(k==='text') e.textContent=v; else if(k.slice(0,2)==='on') e.addEventListener(k.slice(2),v); else if(v!==null&&v!==undefined&&v!==false) e.setAttribute(k,v===true?'':v); } (kids||[]).forEach(function(c){ if(c!==null&&c!==undefined&&c!==false) e.appendChild(typeof c==='string'||typeof c==='number'?document.createTextNode(String(c)):c); }); return e; }
+function toast(m){ var t=$('toast'); t.textContent=m; t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(function(){t.hidden=true;},3500); }
+function ls(k,v){ try{ if(v===undefined) return localStorage.getItem(k); if(v===null) localStorage.removeItem(k); else localStorage.setItem(k,v); }catch(e){ return null; } }
+function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
+function clonar(o){ return JSON.parse(JSON.stringify(o)); }
+function hoyISO(){ var m=new Date(Date.now()-6*3600*1000); return m.toISOString().slice(0,10); } // hora de Managua
+function fmt(s){ if(!s) return ''; var p=s.split('-'); return p[2]+'/'+p[1]+'/'+p[0]; }
+function addDias(s,n){ var p=s.split('-').map(Number); return new Date(Date.UTC(p[0],p[1]-1,p[2]+n)).toISOString().slice(0,10); }
+function diasEntre(a,b){ var pa=a.split('-').map(Number),pb=b.split('-').map(Number); return Math.round((Date.UTC(pb[0],pb[1]-1,pb[2])-Date.UTC(pa[0],pa[1]-1,pa[2]))/86400000); }
+function num(n,d){ if(n===null||n===undefined||n==='') return ''; return (+n).toLocaleString('es-NI',{maximumFractionDigits:d===undefined?1:d}); }
+function norm(s){ return String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); }
+function normNP(s){ return String(s||'').toUpperCase().replace(/[^0-9A-Z]/g,''); }
+function vacio(v){ return v===null||v===undefined||v===''; }
+
+// ---------- datos y cálculo ----------
+var D={umbral:50,equipos:[],registros:[],catalogo:[]};
+var sel=null, editando=null;
+var ETIQ={VENCIDO:'Vencido',PROXIMO:'Próximo',OK:'OK',REVISAR:'Revisar datos',REGISTRO:'Registro',HISTORICO:'Histórico'};
+
+function equipo(n){ return D.equipos.filter(function(e){return e.nombre===n;})[0]||null; }
+function contador(eq,nombre){ return eq?eq.contadores.filter(function(c){return norm(c.nombre)===norm(nombre);})[0]||null:null; }
+// Misma lógica que la hoja: próximo cambio = horómetro de instalación + vida útil; restantes = próximo − lectura actual del contador.
+function calc(r){
+  var o={proximo:null,rest:null,dias:null,fecha:null,estado:'OK'};
+  if(r.tipo==='No'){ o.estado='HISTORICO'; return o; }
+  if(r.tipo==='Registro'){ o.estado='REGISTRO'; return o; }
+  var c=contador(equipo(r.equipo),r.contador);
+  if(vacio(r.vida)||+r.vida<=0||vacio(r.horoInst)||!c||vacio(c.lectura)){ o.estado='REVISAR'; return o; }
+  o.proximo=+r.horoInst+(+r.vida); o.rest=Math.round((o.proximo-c.lectura)*10)/10;
+  if(c.uso>0){ o.dias=o.rest/c.uso; if(o.rest>=0) o.fecha=addDias(hoyISO(),Math.round(o.dias)); }
+  o.estado=o.rest<0?'VENCIDO':(o.rest<=+D.umbral?'PROXIMO':'OK');
+  return o;
+}
+function chip(e){ return el('span',{class:'chip st-'+e,text:ETIQ[e]}); }
+function restTxt(o){ return o.rest===null?'':num(o.rest)+' h'; }
+function fechaTxt(o){ return o.estado==='VENCIDO'?'Vencido':(o.fecha?fmt(o.fecha):''); }
+function ordenUrg(e){ return {VENCIDO:0,PROXIMO:1,REVISAR:2,OK:3,REGISTRO:4,HISTORICO:5}[e]; }
+
+// ---------- guardado en GitHub (data/partes.json) ----------
+var token=null, sha=null, puedeEscribir=false, guardando=false, pendiente=false, timer=null;
+var toc={reg:{},borr:{},eq:{},umbral:false};
+function api(ruta,opts){ opts=opts||{}; var h={'Accept':'application/vnd.github+json'}; if(token) h['Authorization']='Bearer '+token; if(opts.body) h['Content-Type']='application/json';
+  return fetch('https://api.github.com/repos/'+REPO.owner+'/'+REPO.repo+ruta,{method:opts.method||'GET',headers:h,body:opts.body,cache:'no-store'}); }
+function b64aTexto(b){ var bin=atob(b.replace(/\n/g,'')),u=new Uint8Array(bin.length); for(var i=0;i<bin.length;i++) u[i]=bin.charCodeAt(i); return new TextDecoder().decode(u); }
+function textoAB64(t){ var u=new TextEncoder().encode(t),bin=''; for(var i=0;i<u.length;i+=0x8000) bin+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000)); return btoa(bin); }
+function leerRemoto(){
+  return api('/contents/'+REPO.path+'?ref='+REPO.branch).then(function(r){
+    if(r.status===404) return {datos:null,sha:null};
+    if(!r.ok) throw new Error('GitHub respondió '+r.status);
+    return r.json().then(function(j){ return {datos:JSON.parse(b64aTexto(j.content)||'null'),sha:j.sha}; });
+  }).catch(function(e){ // sin API (límite o sin red): leer la copia publicada
+    return fetch('data/partes.json',{cache:'no-store'}).then(function(r){ if(!r.ok) throw e; return r.json(); }).then(function(d){ return {datos:d,sha:null,soloLectura:true}; });
+  });
+}
+function marcar(tipo,clave){
+  if(tipo==='umbral') toc.umbral=true; else toc[tipo][clave]=true;
+  render();
+  if(!puedeEscribir){ estado('Sin conectar: cambios solo en este navegador'); ls('partes_respaldo',JSON.stringify({D:D,toc:toc})); return; }
+  pendiente=true; estado('Guardando…'); ls('partes_respaldo',JSON.stringify({D:D,toc:toc}));
+  clearTimeout(timer); timer=setTimeout(subir,1000);
+}
+function mezclar(rem){ // conserva lo que otro guardó y aplica encima lo tocado aquí
+  if(!rem) return;
+  var porId={}; D.registros.forEach(function(r){porId[r.id]=r;});
+  var regs=rem.registros.filter(function(r){ return !toc.borr[r.id]; }).map(function(r){ return toc.reg[r.id]&&porId[r.id]?porId[r.id]:r; });
+  Object.keys(toc.reg).forEach(function(id){ if(porId[id]&&!regs.some(function(r){return r.id===id;})) regs.push(porId[id]); });
+  var eqs=rem.equipos.map(function(e){ return toc.eq[e.nombre]&&equipo(e.nombre)?equipo(e.nombre):e; });
+  Object.keys(toc.eq).forEach(function(n){ if(equipo(n)&&!eqs.some(function(e){return e.nombre===n;})) eqs.push(equipo(n)); });
+  D={umbral:toc.umbral?D.umbral:rem.umbral,equipos:eqs,registros:regs,catalogo:rem.catalogo||D.catalogo};
+}
+function subir(reintento){
+  if(guardando){ clearTimeout(timer); timer=setTimeout(subir,800); return; }
+  guardando=true; pendiente=false; var mios=clonar(toc); toc={reg:{},borr:{},eq:{},umbral:false};
+  var msg='Partes montadas: '+(Object.keys(mios.eq).concat(Object.keys(mios.reg).map(function(id){ var r=D.registros.filter(function(x){return x.id===id;})[0]; return r?r.equipo:null; })).filter(function(v,i,a){return v&&a.indexOf(v)===i;}).join(', ')||'cambios');
+  api('/contents/'+REPO.path,{method:'PUT',body:JSON.stringify({message:msg,content:textoAB64(JSON.stringify(D,null,1)),sha:sha||undefined,branch:REPO.branch})}).then(function(r){
+    if(r.ok) return r.json().then(function(j){ sha=j.content.sha; guardando=false; if(!pendiente) ls('partes_respaldo',null); errorG(null); estado(pendiente?'Guardando…':'Guardado'); });
+    if(r.status===401) throw new Error('el token no es válido o venció; conéctese con un token nuevo');
+    if(r.status===403||r.status===404) throw new Error('el token no tiene permiso de escritura en programaciones-semanales');
+    if((r.status===409||r.status===422)&&!reintento){
+      return leerRemoto().then(function(rem){ sha=rem.sha; toc=unir(toc,mios); mezclar(rem.datos); guardando=false; render(); subir(true); });
+    }
+    throw new Error('GitHub respondió '+r.status);
+  }).catch(function(e){ guardando=false; toc=unir(toc,mios); pendiente=true; estado('Sin guardar');
+    errorG('Los cambios NO se guardaron en GitHub: '+(e.message||e)+'. Quedan en este navegador hasta que se puedan subir.'); });
+}
+function unir(a,b){ ['reg','borr','eq'].forEach(function(k){ Object.keys(b[k]).forEach(function(x){a[k][x]=true;}); }); a.umbral=a.umbral||b.umbral; return a; }
+function errorG(m){ var a=$('aviso'); if(!m){ if(a.dataset.err){a.dataset.err='';a.hidden=true;} return; } a.dataset.err='1'; a.hidden=false; a.className='banner warn'; a.textContent=''; a.appendChild(el('span',{text:m})); a.appendChild(el('button',{class:'primary',type:'button',onclick:function(){subir();}},['Reintentar'])); }
+function estado(t){ $('estado-guardado').textContent=t; }
+window.addEventListener('beforeunload',function(ev){ if(pendiente||guardando){ ev.preventDefault(); ev.returnValue=''; } });
+
+// ---------- buscador ----------
+function marcarTxt(txt,q){ // resalta la coincidencia del NP ignorando separadores
+  txt=String(txt||''); var nq=normNP(q); if(!nq) return [txt];
+  var mapa=[],limpio=''; for(var i=0;i<txt.length;i++){ var c=txt[i].toUpperCase(); if(/[0-9A-Z]/.test(c)){ mapa.push(i); limpio+=c; } }
+  var k=limpio.indexOf(nq); if(k<0) return [txt];
+  var a=mapa[k],b=mapa[k+nq.length-1]+1; return [txt.slice(0,a),el('mark',{text:txt.slice(a,b)}),txt.slice(b)];
+}
+function buscar(){
+  var q=$('q').value.trim(), out=$('resultados'); out.textContent=''; $('q-limpiar').hidden=!q;
+  if(!q){ out.appendChild(el('p',{class:'res-vacio',text:'Busca en todos los equipos y en el catálogo. No importan espacios ni guiones.'})); return; }
+  var nq=normNP(q), tq=norm(q);
+  var esNP=nq.length>=3&&/\d/.test(nq);
+  var hits=D.registros.filter(function(r){
+    if(esNP&&r.np&&normNP(r.np).indexOf(nq)>=0) return true;
+    return tq.length>=2&&(norm(r.descripcion).indexOf(tq)>=0||norm(r.sistema).indexOf(tq)>=0||norm(r.equipo).indexOf(tq)>=0||(r.np&&norm(r.np).indexOf(tq)>=0));
+  }).map(function(r){ return {r:r,o:calc(r)}; }).sort(function(a,b){ return ordenUrg(a.o.estado)-ordenUrg(b.o.estado)||String(b.r.fechaInst||'').localeCompare(String(a.r.fechaInst||'')); });
+  var cats=D.catalogo.filter(function(c){ return (esNP&&c.np&&normNP(c.np).indexOf(nq)>=0)||(tq.length>=2&&norm(c.descripcion).indexOf(tq)>=0); });
+  var exacto=esNP?hits.filter(function(h){return normNP(h.r.np)===nq;}):[];
+  var montados=exacto.filter(function(h){return h.r.tipo!=='No';});
+  var res=el('p',{class:'res-resumen'});
+  if(!hits.length&&!cats.length){ res.appendChild(document.createTextNode('No hay ninguna parte registrada con ')); res.appendChild(el('b',{text:q})); res.appendChild(document.createTextNode('. Revise el número o regístrela.')); out.appendChild(res);
+    out.appendChild(el('div',{style:'margin-top:8px'},[el('button',{class:'primary',type:'button',onclick:function(){ abrirForm(null,{np:esNP?q:'',descripcion:esNP?'':q}); }},['+ Registrar con este dato'])]));
+    return; }
+  if(exacto.length){
+    var eqs=montados.map(function(h){return h.r.equipo;}).filter(function(v,i,a){return a.indexOf(v)===i;});
+    res.appendChild(el('b',{text:exacto[0].r.np})); res.appendChild(document.createTextNode(eqs.length?' está montado en '+eqs.length+(eqs.length===1?' equipo: ':' equipos: ')+eqs.join(', ')+'.':' solo aparece como histórico (ya reemplazado).'));
+  } else res.appendChild(document.createTextNode(hits.length+(hits.length===1?' parte encontrada':' partes encontradas')+(cats.length?' y '+cats.length+' en el catálogo':'')+'.'));
+  out.appendChild(res);
+  var g=el('div',{class:'hits'});
+  hits.slice(0,40).forEach(function(h){ var r=h.r,o=h.o;
+    g.appendChild(el('div',{class:'hit'},[
+      el('div',{class:'top'},[el('div',{class:'np'},r.np?marcarTxt(r.np,esNP?q:''):[el('span',{style:'color:var(--muted)',text:'Sin NP'})]),chip(o.estado)]),
+      el('div',{},[el('span',{class:'eq',text:r.equipo}),' · '+(r.descripcion||'')]),
+      el('div',{class:'det',text:[r.sistema,r.fechaInst?'Montado '+fmt(r.fechaInst):'Sin fecha de montaje',vacio(r.horoInst)?null:'a '+num(r.horoInst)+' h '+(r.contador||'')].filter(Boolean).join(' · ')}),
+      o.rest!==null?el('div',{class:'det',text:'Faltan '+restTxt(o)+(o.fecha?' · cambio aprox. '+fmt(o.fecha):'')+' · vida '+num(r.vida)+' h'}):null,
+      el('div',{},[el('button',{class:'ghost',type:'button',onclick:function(){ irA(r.equipo); }},['Ver equipo →'])])
+    ]));
+  });
+  cats.forEach(function(c){
+    g.appendChild(el('div',{class:'hit cat'},[
+      el('div',{class:'top'},[el('div',{class:'np'},c.np?marcarTxt(c.np,esNP?q:''):['Sin NP']),el('span',{class:'chip st-REGISTRO',text:'Catálogo'})]),
+      el('div',{},[el('span',{class:'eq',text:c.descripcion})]),
+      el('div',{class:'det',text:'Vida útil de referencia '+num(c.vida)+' h · contador '+(c.contador||'')+(c.equipos?' · usado en '+c.equipos:'')})
+    ]));
+  });
+  out.appendChild(g);
+  if(hits.length>40) out.appendChild(el('p',{class:'hint',text:'Mostrando 40 de '+hits.length+'. Escriba más para afinar.'}));
+}
+$('q').addEventListener('input',buscar);
+$('q-limpiar').addEventListener('click',function(){ $('q').value=''; buscar(); $('q').focus(); });
+document.addEventListener('keydown',function(e){ if(e.key==='/'&&document.activeElement.tagName!=='INPUT'&&document.activeElement.tagName!=='TEXTAREA'){ e.preventDefault(); $('q').focus(); } });
+
+// ---------- render ----------
+function render(){
+  $('hoy').textContent=fmt(hoyISO());
+  $('btn-conectar').textContent=puedeEscribir?'Desconectar':'Conectar GitHub';
+  var all=D.registros.map(function(r){return {r:r,o:calc(r)};});
+  var cnt={VENCIDO:0,PROXIMO:0,OK:0,REVISAR:0}; all.forEach(function(x){ if(cnt[x.o.estado]!==undefined) cnt[x.o.estado]++; });
+  var k=$('kpis'); k.textContent='';
+  [['Partes vigentes',cnt.VENCIDO+cnt.PROXIMO+cnt.OK+cnt.REVISAR,''],['Vencidas',cnt.VENCIDO,'bad'],['Próximas',cnt.PROXIMO,'warn'],['OK',cnt.OK,'ok'],['Revisar datos',cnt.REVISAR,'info']].forEach(function(x){
+    k.appendChild(el('div',{class:'kpi '+x[2]},[el('span',{text:x[0]}),el('b',{text:x[1]})])); });
+  // atención
+  var at=all.filter(function(x){return x.o.estado==='VENCIDO'||x.o.estado==='PROXIMO';}).sort(function(a,b){return a.o.rest-b.o.rest;})
+    .concat(all.filter(function(x){return x.o.estado==='REVISAR';}));
+  var a=$('atencion'); a.textContent='';
+  if(!at.length) a.appendChild(el('div',{class:'vacio',text:'Nada vencido ni por vencer. Todo en orden.'}));
+  else a.appendChild(el('table',{},[el('thead',{},[el('tr',{},['Equipo','NP','Descripción','Estado','Restan','Cambio aprox.','Qué falta'].map(function(h,i){return el('th',{class:i===4?'num':null,text:h});}))]),
+    el('tbody',{},at.map(function(x){ return el('tr',{},[el('td',{},[el('button',{class:'ghost',type:'button',style:'padding:0;font-weight:700;color:var(--ink)',onclick:function(){irA(x.r.equipo);}},[x.r.equipo])]),el('td',{class:'mono',text:x.r.np||''}),el('td',{text:x.r.descripcion}),el('td',{},[chip(x.o.estado)]),el('td',{class:'num',text:restTxt(x.o)}),el('td',{class:'mono',text:fechaTxt(x.o)}),el('td',{class:'obs',text:x.o.estado==='REVISAR'?faltan(x.r):''})]); }))]));
+  // pestañas
+  if(!sel||!equipo(sel)) sel=D.equipos.length?D.equipos[0].nombre:null;
+  var t=$('tabs'); t.textContent='';
+  D.equipos.forEach(function(e){
+    var es=all.filter(function(x){return x.r.equipo===e.nombre;}).map(function(x){return x.o.estado;});
+    var dot=es.indexOf('VENCIDO')>=0?'bad':es.indexOf('PROXIMO')>=0?'warn':es.indexOf('REVISAR')>=0?'info':'';
+    t.appendChild(el('button',{class:'tab',type:'button','aria-pressed':e.nombre===sel?'true':'false',onclick:function(){ sel=e.nombre; render(); }},[el('span',{class:'dot '+dot}),e.nombre]));
+  });
+  renderEquipo(all);
+  // listas para autocompletar
+  var sis={},nps={}; D.registros.forEach(function(r){ if(r.sistema) sis[r.sistema.trim()]=1; if(r.np) nps[r.np]=r.descripcion; }); D.catalogo.forEach(function(c){ if(c.np) nps[c.np]=nps[c.np]||c.descripcion; });
+  fill('lista-sistemas',Object.keys(sis).sort().map(function(s){return [s];}));
+  fill('lista-np',Object.keys(nps).map(function(n){return [n,nps[n]];}));
+  fill('lista-equipos-cat',EQUIPOS_CAT.filter(function(n){return !equipo(n);}).map(function(n){return [n];}));
+  $('aj-umbral').value=D.umbral;
+  $('btn-nuevo').disabled=!D.equipos.length;
+  buscar();
+}
+function fill(id,items){ var d=$(id); d.textContent=''; items.forEach(function(x){ d.appendChild(el('option',{value:x[0],label:x[1]||null})); }); }
+function faltan(r){ var f=[]; if(vacio(r.vida)||+r.vida<=0) f.push('vida útil'); if(vacio(r.horoInst)) f.push('horómetro de instalación'); var c=contador(equipo(r.equipo),r.contador); if(!c) f.push('contador'); else if(vacio(c.lectura)) f.push('lectura actual de '+c.nombre); return 'Falta '+f.join(', '); }
+function irA(n){ sel=n; editando=null; $('formulario').textContent=''; render(); $('tabs').scrollIntoView({behavior:'smooth',block:'start'}); }
+
+function renderEquipo(all){
+  var box=$('equipo'); box.textContent='';
+  var e=equipo(sel); if(!e){ box.appendChild(el('div',{class:'vacio',text:'No hay equipos. Agregue uno en Ajustes.'})); return; }
+  box.appendChild(el('div',{class:'eq-head'},[el('span',{class:'t',text:e.nombre}),el('button',{class:'primary',type:'button',onclick:function(){abrirForm(null,{equipo:e.nombre});}},['+ Registrar parte'])]));
+  var cs=el('div',{class:'contadores'}); var hoy=hoyISO();
+  e.contadores.forEach(function(c){
+    var dias=c.fecha?diasEntre(c.fecha,hoy):null;
+    var lec=el('input',{type:'number',step:'0.1',value:vacio(c.lectura)?'':c.lectura});
+    var uso=el('input',{type:'number',step:'0.5',min:'0',value:vacio(c.uso)?'':c.uso});
+    var fe=el('input',{type:'date',value:c.fecha||''});
+    function guardarC(){ var nl=lec.value===''?null:+lec.value, nu=uso.value===''?null:+uso.value;
+      if(nl!==c.lectura&&fe.value===(c.fecha||'')) fe.value=hoy;
+      c.lectura=nl; c.uso=nu; c.fecha=fe.value||null; marcar('eq',e.nombre); }
+    [lec,uso,fe].forEach(function(i){ i.addEventListener('change',guardarC); });
+    cs.appendChild(el('div',{class:'cont'},[
+      el('div',{class:'nom'},[c.nombre,dias===null?el('span',{class:'viejo',text:'Sin fecha de lectura'}):(dias>7?el('span',{class:'viejo',text:'Hace '+dias+' días'}):el('span',{class:'hint',style:'font-size:.72rem',text:dias===0?'Hoy':'Hace '+dias+(dias===1?' día':' días')}))]),
+      el('label',{},['Lectura actual (h)',lec]),el('label',{},['Uso h/día',uso]),el('label',{style:'grid-column:1/-1'},['Fecha de lectura',fe])
+    ]));
+  });
+  box.appendChild(cs);
+  var filas=all.filter(function(x){return x.r.equipo===e.nombre;}).sort(function(a,b){ var ap=a.o.estado==='HISTORICO'||a.o.estado==='REGISTRO', bp=b.o.estado==='HISTORICO'||b.o.estado==='REGISTRO'; return (ap-bp)||String(b.r.fechaInst||b.r.fechaRegistro||'').localeCompare(String(a.r.fechaInst||a.r.fechaRegistro||'')); });
+  if(!filas.length){ box.appendChild(el('div',{class:'vacio',text:'Todavía no hay partes registradas en este equipo.'})); return; }
+  box.appendChild(el('div',{class:'tabla'},[el('table',{},[
+    el('thead',{},[el('tr',{},['','Montado','Sistema','NP','Descripción','Vida (h)','Contador','Horóm. inst.','Próx. cambio','Restan','Cambio aprox.','Estado','Observación'].map(function(h,i){return el('th',{class:[5,7,8,9].indexOf(i)>=0?'num':null,text:h});}))]),
+    el('tbody',{},filas.map(function(x){ var r=x.r,o=x.o;
+      return el('tr',{class:(o.estado==='HISTORICO'||o.estado==='REGISTRO')?'apagado':null},[
+        el('td',{class:'acc'},[el('button',{class:'ghost',type:'button',title:'Editar',style:'padding:2px 6px',onclick:function(){abrirForm(r);}},['Editar'])]),
+        el('td',{class:'mono',text:fmt(r.fechaInst||r.fechaRegistro)}),el('td',{text:r.sistema||''}),el('td',{class:'mono',text:r.np||''}),el('td',{text:r.descripcion}),
+        el('td',{class:'num',text:num(r.vida)}),el('td',{text:r.contador||''}),el('td',{class:'num',text:num(r.horoInst)}),el('td',{class:'num',text:num(o.proximo)}),
+        el('td',{class:'num',text:restTxt(o)}),el('td',{class:'mono',text:fechaTxt(o)}),el('td',{},[chip(o.estado)]),el('td',{class:'obs',text:r.obs||''})]);
+    }))])]));
+}
+
+// ---------- formulario ----------
+function abrirForm(r,pre){
+  editando=r?r.id:'nuevo'; var f=$('formulario'); f.textContent='';
+  var v=r?clonar(r):Object.assign({equipo:sel,fechaRegistro:hoyISO(),fechaInst:hoyISO(),tipo:'Sí'},pre||{});
+  if(!v.equipo||!equipo(v.equipo)) v.equipo=sel;
+  var I={};
+  function inp(k,attrs){ var i=el(attrs&&attrs.tag||'input',Object.assign({},attrs||{},{tag:null})); if(i.tagName!=='SELECT') i.value=vacio(v[k])?'':v[k]; I[k]=i; return i; }
+  var sEq=el('select',{}); D.equipos.forEach(function(e){ sEq.appendChild(el('option',{value:e.nombre,text:e.nombre})); }); sEq.value=v.equipo; I.equipo=sEq;
+  var sCont=el('select',{}); I.contador=sCont;
+  function llenarCont(){ var e=equipo(sEq.value); var prev=sCont.value||v.contador; sCont.textContent=''; (e?e.contadores:[]).forEach(function(c){ sCont.appendChild(el('option',{value:c.nombre,text:c.nombre})); }); if(prev&&contador(e,prev)) sCont.value=contador(e,prev).nombre; }
+  llenarCont();
+  var sTipo=el('select',{},[el('option',{value:'Sí',text:'Sí, montada y vigente'}),el('option',{value:'Registro',text:'Solo registro (servicio programado)'}),el('option',{value:'No',text:'No, histórico (reemplazada / prestada)'})]); sTipo.value=v.tipo||'Sí'; I.tipo=sTipo;
+  var calcBox=el('div',{class:'calc c6'}), npAviso=el('div',{class:'c6'}), reempl=el('label',{class:'check c6',hidden:true}), err=el('p',{class:'err'});
+  var chkReempl=el('input',{type:'checkbox',checked:true}); reempl.appendChild(chkReempl); var reemplTxt=el('span'); reempl.appendChild(reemplTxt);
+  var anteriores=[];
+  function leer(){ var o={id:v.id,equipo:sEq.value,contador:sCont.value,tipo:sTipo.value};
+    ['fechaRegistro','sistema','np','descripcion','fechaInst','obs'].forEach(function(k){ var t=I[k].value.trim(); o[k]=t||null; });
+    ['vida','horoInst'].forEach(function(k){ o[k]=I[k].value===''?null:+I[k].value; }); return o; }
+  function actualizar(){
+    var o=leer(), c=calc(o), cont=contador(equipo(o.equipo),o.contador);
+    calcBox.textContent='';
+    calcBox.appendChild(el('span',{text:'Lectura actual '+(o.contador||'')+':'})); calcBox.appendChild(document.createTextNode(cont&&!vacio(cont.lectura)?num(cont.lectura)+' h':'—'));
+    calcBox.appendChild(el('span',{text:'Próximo cambio:'})); calcBox.appendChild(document.createTextNode(c.proximo!==null?num(c.proximo)+' h':'—'));
+    calcBox.appendChild(el('span',{text:'Restan:'})); calcBox.appendChild(document.createTextNode(c.rest!==null?restTxt(c)+(c.fecha?' (≈ '+fmt(c.fecha)+')':''):'—'));
+    calcBox.appendChild(chip(c.estado));
+    // NP: ya está en otros equipos o reemplaza uno vigente en este
+    npAviso.textContent=''; anteriores=[];
+    var n=normNP(o.np);
+    if(n){
+      var mismos=D.registros.filter(function(x){ return x.id!==o.id&&normNP(x.np)===n&&x.tipo!=='No'; });
+      anteriores=mismos.filter(function(x){return x.equipo===o.equipo&&x.tipo==='Sí';});
+      var otros=mismos.filter(function(x){return x.equipo!==o.equipo;}).map(function(x){return x.equipo;}).filter(function(x,i,a){return a.indexOf(x)===i;});
+      if(otros.length) npAviso.appendChild(el('div',{class:'aviso-np',text:'Este NP también está montado en: '+otros.join(', ')+'.'}));
+    }
+    reempl.hidden=!(anteriores.length&&editando==='nuevo'&&o.tipo==='Sí');
+    if(!reempl.hidden) reemplTxt.textContent='Esta parte reemplaza a la anterior con el mismo NP en '+o.equipo+' (montada '+(fmt(anteriores[0].fechaInst)||'sin fecha')+'): pasarla a histórico';
+  }
+  function autoNP(){ var n=normNP(I.np.value); if(!n) return;
+    var ref=D.registros.filter(function(x){return normNP(x.np)===n;}).sort(function(a,b){return String(b.fechaRegistro||'').localeCompare(String(a.fechaRegistro||''));})[0]||D.catalogo.filter(function(c){return normNP(c.np)===n;})[0];
+    if(!ref) return;
+    if(!I.descripcion.value) I.descripcion.value=ref.descripcion||'';
+    if(!I.vida.value&&!vacio(ref.vida)) I.vida.value=ref.vida;
+    if(!I.sistema.value&&ref.sistema) I.sistema.value=ref.sistema;
+    var e=equipo(sEq.value); if(ref.contador&&contador(e,ref.contador)) sCont.value=contador(e,ref.contador).nombre;
+    if(!I.horoInst.value) ponerHoro();
+  }
+  function ponerHoro(){ var c=contador(equipo(sEq.value),sCont.value); if(c&&!vacio(c.lectura)) I.horoInst.value=c.lectura; }
+  var g=el('div',{class:'grid'},[
+    el('label',{class:'c2'},['Equipo',sEq]),
+    el('label',{},['Fecha de registro',inp('fechaRegistro',{type:'date'})]),
+    el('label',{},['Fecha de montaje',inp('fechaInst',{type:'date'})]),
+    el('label',{class:'c2'},['Vigente / tipo',sTipo]),
+    el('label',{class:'c2'},['Número de parte (NP)',inp('np',{list:'lista-np',placeholder:'Ej. 5580010292',inputmode:'text',style:'font-family:var(--f-mono)'})]),
+    el('label',{class:'c4'},['Descripción *',inp('descripcion',{placeholder:'Ej. Turbocompresor'})]),
+    el('label',{class:'c2'},['Sistema',inp('sistema',{list:'lista-sistemas',placeholder:'Ej. Motor diésel'})]),
+    el('label',{},['Vida útil (h)',inp('vida',{type:'number',min:'0',step:'1'})]),
+    el('label',{},['Contador',sCont]),
+    el('label',{class:'c2'},['Horómetro de instalación',el('div',{style:'display:flex;gap:6px'},[inp('horoInst',{type:'number',step:'0.1'}),el('button',{type:'button',title:'Usar la lectura actual del contador',onclick:function(){ponerHoro();actualizar();}},['Actual'])])]),
+    el('label',{class:'c6'},['Observación',inp('obs',{tag:'textarea',rows:'2',placeholder:'Opcional: de dónde vino, quién la montó, OT…'})]),
+    npAviso, reempl, calcBox
+  ]);
+  if(v.obs) I.obs.value=v.obs;
+  sEq.addEventListener('change',function(){ llenarCont(); if(editando==='nuevo') ponerHoro(); actualizar(); });
+  sCont.addEventListener('change',function(){ if(editando==='nuevo') ponerHoro(); actualizar(); });
+  I.np.addEventListener('change',function(){ autoNP(); actualizar(); });
+  g.addEventListener('input',actualizar); sTipo.addEventListener('change',actualizar);
+  var acciones=el('div',{class:'form-actions'},[
+    r?el('button',{class:'danger',type:'button',style:'margin-right:auto',onclick:function(){ if(!confirmarBorrar()) return; D.registros=D.registros.filter(function(x){return x.id!==r.id;}); cerrarForm(); marcar('borr',r.id); toast('Registro eliminado.'); }},['Eliminar']):null,
+    el('button',{type:'button',onclick:cerrarForm},['Cancelar']),
+    el('button',{class:'primary',type:'submit'},[r?'Guardar cambios':'Registrar parte'])
+  ]);
+  var form=el('form',{class:'form',autocomplete:'off'},[el('h3',{text:r?'Editar parte · '+r.equipo:'Registrar parte montada'}),g,err,acciones]);
+  form.addEventListener('submit',function(ev){ ev.preventDefault(); var o=leer();
+    if(!o.descripcion){ err.textContent='Escriba la descripción de la parte.'; I.descripcion.focus(); return; }
+    if(o.np) o.np=o.np.toUpperCase();
+    if(r){ Object.assign(r,o); marcar('reg',r.id); toast('Cambios guardados.'); }
+    else { o.id=uid(); o.creado=new Date().toISOString(); D.registros.push(o);
+      if(!reempl.hidden&&chkReempl.checked) anteriores.forEach(function(x){ x.tipo='No'; x.obs=((x.obs?x.obs+' ':'')+'Reemplazado el '+fmt(o.fechaInst||hoyISO())+'.').trim(); toc.reg[x.id]=true; });
+      sel=o.equipo; marcar('reg',o.id); toast('Parte registrada en '+o.equipo+'.'); }
+    cerrarForm();
+  });
+  f.appendChild(form); actualizar(); if(!r&&!v.horoInst) ponerHoro(); actualizar();
+  form.scrollIntoView({behavior:'smooth',block:'start'}); setTimeout(function(){ (v.np?I.descripcion:I.np).focus({preventScroll:true}); },300);
+}
+function confirmarBorrar(){ return window.confirm('¿Eliminar este registro? Si la parte solo se desmontó, mejor cámbiela a «No, histórico».'); }
+function cerrarForm(){ editando=null; $('formulario').textContent=''; render(); }
+$('btn-nuevo').addEventListener('click',function(){ abrirForm(null); });
+
+// ---------- ajustes y CSV ----------
+$('aj-guardar').addEventListener('click',function(){ var u=+$('aj-umbral').value; if(!(u>=0)) return; D.umbral=u; marcar('umbral'); toast('Umbral guardado: '+u+' h.'); });
+$('ne-agregar').addEventListener('click',function(){
+  var n=$('ne-nombre').value.trim(), cs=$('ne-cont').value.split(',').map(function(s){return s.trim();}).filter(Boolean), u=+$('ne-uso').value||null;
+  if(!n){ toast('Escriba el nombre del equipo.'); return; } if(equipo(n)){ toast('Ese equipo ya existe.'); return; }
+  if(!cs.length) cs=['Motor'];
+  D.equipos.push({nombre:n,contadores:cs.map(function(c){return {nombre:c,lectura:null,uso:u,fecha:null};})});
+  sel=n; $('ne-nombre').value=''; $('ne-cont').value=''; marcar('eq',n); toast(n+' agregado. Ponga las lecturas de sus horómetros.');
+});
+$('btn-csv').addEventListener('click',function(){
+  var cols=['Equipo','Fecha de registro','Sistema','NP','Descripción','Vida útil (h)','Contador','Horómetro de instalación','Fecha de instalación','Vigente / Tipo','Horómetro próximo cambio','Horas restantes','Estado','Fecha estimada de cambio','Observación'];
+  var q=function(s){ s=s===null||s===undefined?'':String(s); return /[",;\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s; };
+  var filas=D.registros.map(function(r){ var o=calc(r); return [r.equipo,r.fechaRegistro,r.sistema,r.np,r.descripcion,r.vida,r.contador,r.horoInst,r.fechaInst,r.tipo,o.proximo,o.rest,ETIQ[o.estado],o.estado==='VENCIDO'?'Vencido':o.fecha,r.obs]; });
+  var txt='﻿'+[cols].concat(filas).map(function(f){return f.map(q).join(',');}).join('\r\n');
+  var a=el('a',{href:URL.createObjectURL(new Blob([txt],{type:'text/csv;charset=utf-8'})),download:'partes_montadas_'+hoyISO()+'.csv'}); document.body.appendChild(a); a.click(); a.remove();
+});
+
+// ---------- conexión ----------
+function validarToken(t){
+  token=t;
+  return api('').then(function(r){ if(!r.ok) throw new Error('El token no tiene acceso al repositorio ('+r.status+').'); return r.json(); }).then(function(j){
+    if(!j.permissions||!j.permissions.push) throw new Error('El token no tiene permiso de escritura en el repositorio.');
+    return api('/contents/'+REPO.path,{method:'PUT',body:JSON.stringify({message:'prueba',content:textoAB64('{}'),sha:'0000000000000000000000000000000000000000',branch:REPO.branch})}).then(function(r){
+      if(r.status===401) throw new Error('El token no es válido o ya venció. Cree uno nuevo.');
+      if(r.status===403||r.status===404) throw new Error('El token no tiene permiso para guardar (Contents: Read and write en programaciones-semanales).');
+      puedeEscribir=true; return true; });
+  });
+}
+$('btn-conectar').addEventListener('click',function(){ if(puedeEscribir){ ls('gh_token',null); token=null; puedeEscribir=false; estado('Modo consulta'); render(); toast('Desconectado.'); } else { $('conexion').hidden=false; $('tok').focus(); } });
+$('con-cerrar').addEventListener('click',function(){ $('conexion').hidden=true; });
+$('form-conexion').addEventListener('submit',function(ev){ ev.preventDefault(); var t=$('tok').value.trim(); if(!t) return; $('con-err').textContent='';
+  validarToken(t).then(function(){ ls('gh_token',t); $('conexion').hidden=true; $('tok').value=''; cargar().then(function(){ toast('Conectado. Los cambios se guardan en GitHub.'); }); })
+  .catch(function(e){ token=null; puedeEscribir=false; $('con-err').textContent=e.message; }); });
+
+// ---------- arranque ----------
+function cargar(){
+  return leerRemoto().then(function(rem){
+    sha=rem.sha; if(rem.datos) D=rem.datos;
+    var resp=null; try{ resp=JSON.parse(ls('partes_respaldo')||'null'); }catch(e){}
+    if(resp&&resp.toc&&(Object.keys(resp.toc.reg).length||Object.keys(resp.toc.borr).length||Object.keys(resp.toc.eq).length||resp.toc.umbral)){
+      var remD=D; D=resp.D; toc=resp.toc; mezclar(remD);
+      if(puedeEscribir){ pendiente=true; subir(); toast('Se recuperaron cambios sin guardar. Subiendo a GitHub…'); }
+      else estado('Sin conectar: hay cambios solo en este navegador');
+    } else estado(puedeEscribir?'Guardado':'Modo consulta');
+    render();
+  }).catch(function(e){ render(); var a=$('aviso'); a.hidden=false; a.className='banner warn'; a.textContent='No se pudieron leer los datos ('+(e.message||e)+'). Recargue la página.'; estado('Sin datos'); });
+}
+(function(){
+  var p=new URLSearchParams(location.search); if(p.get('np')) $('q').value=p.get('np');
+  render();
+  var t=ls('gh_token');
+  (t?validarToken(t).catch(function(){ token=null; puedeEscribir=false; }):Promise.resolve()).then(cargar);
+  document.addEventListener('visibilitychange',function(){ if(document.visibilityState==='visible'&&!pendiente&&!guardando&&!editando) cargar(); });
+})();
+</script>
+</body>
+</html>
