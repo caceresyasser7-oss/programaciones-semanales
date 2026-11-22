@@ -358,8 +358,30 @@
    "hhTecDia": 12,
    "diasLab": 7
   },
-  "diasEquipo": {},
+  "diasEquipo": {
+   "Boltec S #1": 4
+  },
   "equiposExtra": [],
-  "trabajos": []
+  "trabajos": [
+   {
+    "id": "mws1ax4rtkaal",
+    "dia": 4,
+    "inicio": "06:00",
+    "fin": "18:00",
+    "equipo": "Boltec S #1",
+    "portal": "Pioneer",
+    "ot": "",
+    "tipo": "Correctivo programado",
+    "servicio": "No aplica",
+    "descripcion": "cambio de pines y bujes del cilindro de levante del boom",
+    "prioridad": "4 Bajo (40 días)",
+    "tecnicos": 2,
+    "repuestos": "3125198180, 3125198181, 0501001900, 9128734500, 0335216500",
+    "repListos": "Parcial",
+    "responsable": "Juan Arango (inspector)",
+    "estado": "Programado",
+    "obs": "alojamientos de pines y bujes en estado critico"
+   }
+  ]
  }
 }
