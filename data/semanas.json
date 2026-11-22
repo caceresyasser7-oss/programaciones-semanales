@@ -381,6 +381,25 @@
     "responsable": "Juan Arango (inspector)",
     "estado": "Programado",
     "obs": "alojamientos de pines y bujes en estado critico"
+   },
+   {
+    "id": "mws1gtjb1zbip",
+    "dia": 4,
+    "inicio": "06:00",
+    "fin": "18:00",
+    "equipo": "Boltec S #1",
+    "portal": "Pioneer",
+    "ot": "",
+    "tipo": "PM (preventivo)",
+    "servicio": "No aplica",
+    "descripcion": "cambio de dados de los brazos manipuladores de pernos",
+    "prioridad": "3 Medio (14 días)",
+    "tecnicos": 1,
+    "repuestos": "3128003384",
+    "repListos": "Sí",
+    "responsable": "",
+    "estado": "Programado",
+    "obs": ""
    }
   ]
  }
