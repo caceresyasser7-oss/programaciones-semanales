@@ -450,6 +450,21 @@
    "vida": 4000,
    "horoInst": 1391,
    "creado": "2026-11-21T22:18:16.027Z"
+  },
+  {
+   "id": "mwtck4i4qq780",
+   "equipo": "Simba S7D #2",
+   "contador": "HD",
+   "tipo": "Sí",
+   "fechaRegistro": "2026-11-23",
+   "sistema": "sistema hidraulico",
+   "np": "5112287802",
+   "descripcion": "HYDRAULIC PUMP de posicionamiento",
+   "fechaInst": "2026-11-23",
+   "obs": "bomba nueva. la anterior se daño por excesivas partes metalicas en el tanque hidraulico",
+   "vida": 5000,
+   "horoInst": 1310.6,
+   "creado": "2026-11-23T14:14:18.316Z"
   }
  ],
  "catalogo": [
